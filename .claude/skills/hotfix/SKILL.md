@@ -14,7 +14,7 @@ When this skill is invoked:
    - **S2 (Major)**: Significant feature broken, workaround exists — hotfix within 24 hours
    - If severity is S3 or lower, recommend using the normal bug fix workflow instead
 
-2. **Create the hotfix record** at `production/hotfixes/hotfix-[date]-[short-name].md`:
+2. **Create the hotfix record** at `docs/production/hotfixes/hotfix-[date]-[short-name].md`:
 
    ```markdown
    ## Hotfix: [Short Description]

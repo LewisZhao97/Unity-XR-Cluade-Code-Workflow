@@ -60,7 +60,7 @@ budget) while delivering satisfying player experiences.
 
 ## Design Doc Output
 
-Write design documents to `Assets/App docs/`. This is the canonical location
+Write design documents to `docs/app design docs/`. This is the canonical location
 for all app design artifacts (concept docs, system GDDs, pillars, etc.).
 Developers refine these docs as the app evolves.
 

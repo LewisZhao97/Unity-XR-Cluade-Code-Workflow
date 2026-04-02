@@ -23,19 +23,19 @@ of artifacts, and gaps that need attention. It's especially useful when:
 
 Analyze project structure and content:
 
-**App Design Documents** (`Assets/App docs/`):
-- Count design docs in `Assets/App docs/*.md`
+**App Design Documents** (`docs/app design docs/`):
+- Count design docs in `docs/app design docs/*.md`
 - Check for game-concept.md, game-pillars.md, systems-index.md
 - If systems-index.md exists, count total systems vs. designed systems
 - Analyze completeness (Overview, Detailed Design, Edge Cases, etc.)
 
-**Source Code** (`src/`):
+**Source Code** (`Assets/Scripts`):
 - Count source files (language-agnostic)
 - Identify major systems (directories with 5+ files)
 - Check for core/, gameplay/, ai/, networking/, ui/ directories
 - Estimate lines of code (rough scale)
 
-**Production Artifacts** (`production/`):
+**Production Artifacts** (`docs/production/`):
 - Check for active sprint plans
 - Look for milestone definitions
 - Find roadmap documents
@@ -55,7 +55,7 @@ Analyze project structure and content:
 
 ### 2. Classify Project Stage
 
-Based on scanned artifacts, determine stage. Check `production/stage.txt` first —
+Based on scanned artifacts, determine stage. Check `docs/production/stage.txt` first —
 if it exists, use its value (explicit override from `/gate-check`). Otherwise,
 auto-detect using these heuristics (check from most-advanced backward):
 
@@ -64,8 +64,8 @@ auto-detect using these heuristics (check from most-advanced backward):
 | **Concept** | No game concept doc, brainstorming phase |
 | **Systems Design** | Game concept exists, systems index missing or incomplete |
 | **Technical Setup** | Systems index exists, engine not configured |
-| **Pre-Production** | Engine configured, `src/` has <10 source files |
-| **Production** | `src/` has 10+ source files, active development |
+| **Pre-Production** | Engine configured, `Assets/Scripts/` has <10 source files |
+| **Production** | `Assets/Scripts/` has 10+ source files, active development |
 | **Polish** | Explicit only (set by `/gate-check` Production → Polish gate) |
 | **Release** | Explicit only (set by `/gate-check` Polish → Release gate) |
 
@@ -73,9 +73,9 @@ auto-detect using these heuristics (check from most-advanced backward):
 
 **DO NOT** just list missing files. Instead, **ask clarifying questions**:
 
-- "I see combat code (`src/gameplay/combat/`) but no `Assets/App docs/combat-system.md`. Was this prototyped first, or should we reverse-document?"
+- "I see combat code (`Assets/Scripts/Gameplay/`) but no `docs/app design docs/combat-system.md`. Was this prototyped first, or should we reverse-document?"
 - "You have 15 ADRs but no architecture overview. Should I create one to help new contributors?"
-- "No sprint plans in `production/`. Are you tracking work elsewhere (Jira, Trello, etc.)?"
+- "No sprint plans in `docs/production/`. Are you tracking work elsewhere (Jira, Trello, etc.)?"
 - "I found a game concept but no systems index. Have you decomposed the concept into individual systems yet, or should we run `/map-systems`?"
 - "Prototypes directory has 3 projects with no READMEs. Were these experiments, or do they need documentation?"
 
@@ -142,7 +142,7 @@ Recommended next steps:
 - [Priority 2]
 - [Priority 3]
 
-May I write the full stage analysis to production/project-stage-report.md?
+May I write the full stage analysis to docs/production/project-stage-report.md?
 ```
 
 Wait for user approval before creating the file.
@@ -169,7 +169,7 @@ Wait for user approval before creating the file.
 After generating the report, suggest relevant next steps:
 
 - **Concept exists but no systems index?** → `/map-systems` to decompose into systems
-- **Missing design docs?** → `/reverse-document design src/[system]`
+- **Missing design docs?** → `/reverse-document design Assets/`
 - **Missing architecture docs?** → `/architecture-decision` or `/reverse-document architecture`
 - **Prototypes need documentation?** → `/reverse-document concept prototypes/[name]`
 - **No sprint plan?** → `/sprint-plan`
@@ -185,6 +185,6 @@ This skill follows the collaborative design principle:
 2. **Present Options**: "Should I create X, or is it tracked elsewhere?"
 3. **User Decides**: Wait for direction
 4. **Show Draft**: Display report summary
-5. **Get Approval**: "May I write to production/project-stage-report.md?"
+5. **Get Approval**: "May I write to docs/production/project-stage-report.md?"
 
 **Never** silently write files. **Always** show findings and ask before creating artifacts.

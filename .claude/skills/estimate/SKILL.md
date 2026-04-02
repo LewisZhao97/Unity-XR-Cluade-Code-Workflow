@@ -14,7 +14,7 @@ When this skill is invoked:
 2. **Read CLAUDE.md** for project context: tech stack, coding standards,
    architectural patterns, and any estimation guidelines.
 
-3. **Read relevant design documents** from `Assets/App docs/` if the task relates
+3. **Read relevant design documents** from `docs/app design docs/` if the task relates
    to a documented feature or system.
 
 4. **Scan the codebase** to understand the systems affected by this task:
@@ -24,7 +24,7 @@ When this skill is invoked:
    - Identify integration points with other systems
    - Check for existing test coverage in the affected areas
 
-5. **Read past sprint data** from `production/sprints/` if available:
+5. **Read past sprint data** from `docs/app design docs/` if available:
    - Look for similar completed tasks and their actual effort
    - Calculate historical velocity (planned vs actual)
    - Identify any estimation bias patterns (consistently over or under)

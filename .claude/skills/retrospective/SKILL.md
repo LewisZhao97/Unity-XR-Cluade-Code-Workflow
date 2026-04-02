@@ -14,8 +14,8 @@ When this skill is invoked:
    (`sprint-N`) or a milestone retrospective (`milestone-name`).
 
 2. **Read the sprint or milestone plan** from the appropriate location:
-   - Sprint plans: `production/sprints/`
-   - Milestone definitions: `production/milestones/`
+   - Sprint plans: `docs/app design docs/`
+   - Milestone definitions: `docs/production/milestones/`
 
    Extract: planned tasks, estimated effort, owners, and goals.
 
@@ -36,8 +36,8 @@ When this skill is invoked:
      retrospectives)
    - Note whether technical debt is growing or shrinking
 
-6. **Read previous retrospectives** (if any) from `production/sprints/` or
-   `production/milestones/` to check:
+6. **Read previous retrospectives** (if any) from `docs/app design docs/` or
+   `docs/production/milestones/` to check:
    - Were previous action items addressed?
    - Are the same problems recurring?
    - How has velocity trended?
@@ -137,8 +137,8 @@ the single most important thing to change going forward?]
 ```
 
 8. **Save the retrospective** to the appropriate location:
-   - Sprint: `production/sprints/sprint-[N]-retrospective.md`
-   - Milestone: `production/milestones/[milestone-name]-retrospective.md`
+   - Sprint: `docs/app design docs/sprint-[N]-retrospective.md`
+   - Milestone: `docs/production/milestones/[milestone-name]-retrospective.md`
 
    Create the directory if it does not exist.
 

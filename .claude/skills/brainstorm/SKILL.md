@@ -13,8 +13,8 @@ When this skill is invoked:
    scratch.
 
 2. **Check for existing concept work**:
-   - Read `Assets/App docs/game-concept.md` if it exists (resume, don't restart)
-   - Read `Assets/App docs/game-pillars.md` if it exists (build on established pillars)
+   - Read `docs/app design docs/game-concept.md` if it exists (resume, don't restart)
+   - Read `docs/app design docs/game-pillars.md` if it exists (build on established pillars)
 
 3. **Run through ideation phases** interactively, asking the user questions at
    each phase. Do NOT generate everything silently — the goal is **collaborative
@@ -193,11 +193,11 @@ Ground the concept in reality:
    brainstorm conversation, including the MDA analysis, player motivation
    profile, and flow state design sections.
 
-5. **Save to** `Assets/App docs/game-concept.md`, creating directories as needed.
+5. **Save to** `docs/app design docs/game-concept.md`, creating directories as needed.
 
 6. **Suggest next steps** (in this order — this is the professional studio
    pre-production pipeline):
-   - "Use `/design-review Assets/App docs/game-concept.md` to validate completeness"
+   - "Use `/design-review docs/app design docs/game-concept.md` to validate completeness"
    - "Prototype the core loop with `/prototype [core-mechanic]`"
    - "If validated, plan the first sprint with `/sprint-plan new`"
 

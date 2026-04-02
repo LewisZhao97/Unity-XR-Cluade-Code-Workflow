@@ -35,7 +35,7 @@ echo ""
 echo "## App Docs — Work In Progress"
 
 WIP_FOUND=false
-for f in "Assets/App docs"/*.md; do
+for f in "docs/app design docs"/*.md; do
     [ -f "$f" ] || continue
     INCOMPLETE=$(grep -n -E "TODO|WIP|PLACEHOLDER|\[TO BE|\[TBD\]" "$f" 2>/dev/null)
     if [ -n "$INCOMPLETE" ]; then

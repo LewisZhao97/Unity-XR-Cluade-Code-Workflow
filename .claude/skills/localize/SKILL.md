@@ -14,7 +14,7 @@ When this skill is invoked:
    - `status` — Report overall localization status
 
 2. **For `scan`**:
-   - Search `src/` for hardcoded user-facing strings:
+   - Search `Assets/Locales/` for hardcoded user-facing strings:
      - String literals in UI code that are not wrapped in a localization function
      - Concatenated strings that should be parameterized
      - Strings with positional placeholders (`%s`, `%d`) instead of named ones (`{playerName}`)

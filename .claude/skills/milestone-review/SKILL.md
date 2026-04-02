@@ -8,15 +8,15 @@ allowed-tools: Read, Glob, Grep, Write
 
 When this skill is invoked:
 
-1. **Read the milestone definition** from `production/milestones/`.
+1. **Read the milestone definition** from `docs/production/milestones/`.
 
 2. **Read all sprint reports** for sprints within this milestone from
-   `production/sprints/`.
+   `docs/app design docs/`.
 
 3. **Scan the codebase** for TODO, FIXME, HACK markers that indicate
    incomplete work.
 
-4. **Check the risk register** at `production/risk-register/`.
+4. **Check the risk register** at `docs/production/risk-register/`.
 
 5. **Generate the milestone review**:
 

@@ -1,7 +1,7 @@
 ---
 name: gate-check
 description: "Validate readiness to advance between development phases. Produces a PASS/CONCERNS/FAIL verdict with specific blockers and required artifacts."
-argument-hint: "[target-phase: systems-design | technical-setup | pre-production | production | polish | release]"
+argument-hint: "[target-phase: concept | systems-design | technical-setup | pre-production | production | polish | release]"
 user-invocable: true
 allowed-tools: Read, Glob, Grep, Bash, Write
 ---
@@ -26,7 +26,7 @@ The project progresses through these stages:
 6. **Polish** — Performance, playtesting, bug fixing
 7. **Release** — Launch prep, certification
 
-**When a gate passes**, write the new stage name to `production/stage.txt`
+**When a gate passes**, write the new stage name to `docs/production/stage.txt`
 (single line, e.g. `Production`). This updates the status line immediately.
 
 ---
@@ -44,8 +44,8 @@ The project progresses through these stages:
 ### Gate: Concept → Systems Design
 
 **Required Artifacts:**
-- [ ] `Assets/App docs/game-concept.md` exists and has content
-- [ ] Game pillars defined (in concept doc or `Assets/App docs/game-pillars.md`)
+- [ ] `docs/app design docs/game-concept.md` exists and has content
+- [ ] Game pillars defined (in concept doc or `docs/app design docs/game-pillars.md`)
 
 **Quality Checks:**
 - [ ] Game concept has been reviewed (`/design-review` verdict not MAJOR REVISION NEEDED)
@@ -57,8 +57,8 @@ The project progresses through these stages:
 ### Gate: Systems Design → Technical Setup
 
 **Required Artifacts:**
-- [ ] Systems index exists at `Assets/App docs/systems-index.md` with at least MVP systems enumerated
-- [ ] At least 1 GDD in `Assets/App docs/` (beyond game-concept.md and systems-index.md)
+- [ ] Systems index exists at `docs/app design docs/systems-index.md` with at least MVP systems enumerated
+- [ ] At least 1 GDD in `docs/app design docs/` (beyond game-concept.md and systems-index.md)
 
 **Quality Checks:**
 - [ ] GDD(s) pass design review (8 required sections present)
@@ -85,7 +85,7 @@ The project progresses through these stages:
 
 **Required Artifacts:**
 - [ ] At least 1 prototype in `prototypes/` with a README
-- [ ] First sprint plan exists in `production/sprints/`
+- [ ] First sprint plan exists in `docs/app design docs/`
 - [ ] All MVP-tier GDDs from systems index are complete
 
 **Quality Checks:**
@@ -98,8 +98,8 @@ The project progresses through these stages:
 ### Gate: Production → Polish
 
 **Required Artifacts:**
-- [ ] `src/` has active code organized into subsystems
-- [ ] All core mechanics from GDD are implemented (cross-reference `Assets/App docs/` with `src/`)
+- [ ] `Assets/Scripts/` has active code organized into subsystems
+- [ ] All core mechanics from GDD are implemented (cross-reference `docs/app design docs/` with `Assets/Scripts/`)
 - [ ] Main gameplay path is playable end-to-end
 - [ ] Test files exist in `tests/`
 - [ ] At least 1 playtest report (or `/playtest-report` has been run)
@@ -117,7 +117,7 @@ The project progresses through these stages:
 **Required Artifacts:**
 - [ ] All features from milestone plan are implemented
 - [ ] Content is complete (all levels, assets, dialogue referenced in design docs exist)
-- [ ] Localization strings are externalized (no hardcoded player-facing text in `src/`)
+- [ ] Localization strings are externalized (no hardcoded player-facing text in `Assets/Scripts/`)
 - [ ] QA test plan exists
 - [ ] Balance data has been reviewed (`/balance-check` run)
 - [ ] Release checklist completed (`/release-checklist` or `/launch-checklist` run)
@@ -150,10 +150,10 @@ For each item in the target gate:
 - For design review checks: `Read` the GDD and check for the 8 required sections
 - For performance checks: `Read` technical-preferences.md and compare against any
   profiling data in `tests/performance/` or recent `/perf-profile` output
-- For localization checks: `Grep` for hardcoded strings in `src/`
+- For localization checks: `Grep` for hardcoded strings in `Assets/Scripts/`
 
 ### Cross-Reference Checks
-- Compare `Assets/App docs/` documents against `src/` implementations
+- Compare `docs/app design docs/` documents against `Assets/Scripts/` implementations
 - Check that every system referenced in architecture docs has corresponding code
 - Verify sprint plans reference real work items
 
@@ -180,9 +180,9 @@ For items that can't be automatically verified, **ask the user**:
 **Checked by**: gate-check skill
 
 ### Required Artifacts: [X/Y present]
-- [x] Assets/App docs/game-concept.md — exists, 2.4KB
+- [x] docs/app design docs/game-concept.md — exists, 2.4KB
 - [ ] docs/architecture/ — MISSING (no ADRs found)
-- [x] production/sprints/ — exists, 1 sprint plan
+- [x] docs/app design docs/ — exists, 1 sprint plan
 
 ### Quality Checks: [X/Y passing]
 - [x] GDD has 8/8 required sections
@@ -210,15 +210,15 @@ For items that can't be automatically verified, **ask the user**:
 
 When the verdict is **PASS** and the user confirms they want to advance:
 
-1. Write the new stage name to `production/stage.txt` (single line, no trailing newline)
+1. Write the new stage name to `docs/production/stage.txt` (single line, no trailing newline)
 2. This immediately updates the status line for all future sessions
 
 Example: if passing the "Pre-Production → Production" gate:
 ```bash
-echo -n "Production" > production/stage.txt
+echo -n "Production" > docs/production/stage.txt
 ```
 
-**Always ask before writing**: "Gate passed. May I update `production/stage.txt` to 'Production'?"
+**Always ask before writing**: "Gate passed. May I update `docs/production/stage.txt` to 'Production'?"
 
 ---
 
@@ -246,7 +246,7 @@ This skill follows the collaborative design principle:
 2. **Ask about unknowns**: Don't assume PASS for things you can't verify
 3. **Present findings**: Show the full checklist with status
 4. **User decides**: The verdict is a recommendation — the user makes the final call
-5. **Get approval**: "May I write this gate check report to production/gate-checks/?"
+5. **Get approval**: "May I write this gate check report to docs/production/gate-checks/?"
 
 **Never** block a user from advancing — the verdict is advisory. Document the risks
 and let the user decide whether to proceed despite concerns.

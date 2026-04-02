@@ -16,7 +16,7 @@ When this skill is invoked:
 2. **Read CLAUDE.md** for project context, version information, and platform
    targets.
 
-3. **Read the current milestone** from `production/milestones/` to understand
+3. **Read the current milestone** from `docs/production/milestones/` to understand
    what features and content should be included in this release.
 
 4. **Scan the codebase** for outstanding issues:
@@ -159,7 +159,7 @@ resolution and estimated time to address them.]
 ```
 
 9. **Save the checklist** to
-   `production/releases/release-checklist-[version].md`, creating the
+   `docs/production/releases/release-checklist-[version].md`, creating the
    directory if it does not exist.
 
 10. **Output a summary** to the user with: total checklist items, number of

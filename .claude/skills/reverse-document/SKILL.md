@@ -1,7 +1,7 @@
 ---
 name: reverse-document
 description: "Generate design or architecture documents from existing implementation. Works backwards from code/prototypes to create missing planning docs."
-argument-hint: "<type> <path> (e.g., 'design src/gameplay/combat' or 'architecture src/core')"
+argument-hint: "<type> <path> (e.g., 'design Assets/Scripts/gameplay/combat' or 'architecture Assets/Scripts/core')"
 user-invocable: true
 allowed-tools: Read, Glob, Grep, Write, Edit, Bash
 ---
@@ -29,14 +29,14 @@ appropriate design or architecture documentation. Use this when:
 - `concept` → Generate a concept document from prototype
 
 **Path**: Directory or file to analyze
-- `src/gameplay/combat/` → All combat-related code
-- `src/core/event-system.cpp` → Specific file
+- `Assets/Scripts/gameplay/combat/` → All combat-related code
+- `Assets/Scripts/core/event-system.cpp` → Specific file
 - `prototypes/stealth-mech/` → Prototype directory
 
 **Examples**:
 ```bash
-/reverse-document design src/gameplay/magic-system
-/reverse-document architecture src/core/entity-component
+/reverse-document design Assets/Scripts/gameplay/magic-system
+/reverse-document architecture Assets/Scripts/core/entity-component
 /reverse-document concept prototypes/vehicle-combat
 ```
 
@@ -93,7 +93,7 @@ appropriate design or architecture documentation. Use this when:
 Before drafting, show what you discovered:
 
 ```
-I've analyzed src/gameplay/combat/. Here's what I found:
+I've analyzed Assets/Scripts/gameplay/combat/. Here's what I found:
 
 MECHANICS IMPLEMENTED:
 - 3-hit combo system with timing windows
@@ -122,7 +122,7 @@ Based on type, use appropriate template:
 
 | Type | Template | Output Path |
 |------|----------|-------------|
-| `design` | `templates/design-doc-from-implementation.md` | `Assets/App docs/[system-name].md` |
+| `design` | `templates/design-doc-from-implementation.md` | `docs/app design docs/[system-name].md` |
 | `architecture` | `templates/architecture-doc-from-code.md` | `docs/architecture/[decision-name].md` |
 | `concept` | `templates/concept-doc-from-prototype.md` | `prototypes/[name]/CONCEPT.md` or `design/concepts/[name].md` |
 
@@ -149,7 +149,7 @@ SECTIONS MARKED AS INCOMPLETE:
 - "Enemy AI interaction with stagger" (not fully implemented yet)
 - "Weapon variety and scaling" (only sword implemented so far)
 
-May I write this to Assets/App docs/combat-system.md?
+May I write this to docs/app design docs/combat-system.md?
 ```
 
 Wait for approval. User may request changes before writing.
@@ -161,7 +161,7 @@ When approved, write the file with special markers:
 ```markdown
 ---
 status: reverse-documented
-source: src/gameplay/combat/
+source: Assets/Scripts/gameplay/combat/
 date: 2026-02-13
 verified-by: [User name]
 ---
@@ -180,7 +180,7 @@ verified-by: [User name]
 After writing, suggest next steps:
 
 ```
-✅ Written to Assets/App docs/combat-system.md
+✅ Written to docs/app design docs/combat-system.md
 
 FOLLOW-UP RECOMMENDED:
 1. Run /balance-check on combat formulas (exponential scaling concern)
@@ -199,23 +199,23 @@ Would you like me to tackle any of these now?
 
 | If analyzing... | Use template... | Because... |
 |----------------|-----------------|------------|
-| `src/gameplay/*` | design-doc-from-implementation.md | Gameplay mechanics → GDD |
-| `src/core/*`, `src/ai/*` | architecture-doc-from-code.md | Core systems → ADR |
+| `Assets/Scripts/gameplay/*` | design-doc-from-implementation.md | Gameplay mechanics → GDD |
+| `Assets/Scripts/core/*`, `Assets/Scripts/ai/*` | architecture-doc-from-code.md | Core systems → ADR |
 | `prototypes/*` | concept-doc-from-prototype.md | Experiments → concept doc |
-| `src/networking/*` | architecture-doc-from-code.md | Technical systems → ADR |
-| `src/ui/*` | design-doc-from-implementation.md | UI/UX → design spec |
+| `Assets/Scripts/networking/*` | architecture-doc-from-code.md | Technical systems → ADR |
+| `Assets/Scripts/ui/*` | design-doc-from-implementation.md | UI/UX → design spec |
 
 ---
 
 ## Example Session: Reverse-Document Combat Code
 
 ```
-User: /reverse-document design src/gameplay/combat
+User: /reverse-document design Assets/Scripts/gameplay/combat
 
 Agent: I'll analyze your combat implementation to create a design doc.
        [Reads code, discovers mechanics, formulas]
 
-Agent: I've analyzed src/gameplay/combat/. Here's what I found:
+Agent: I've analyzed Assets/Scripts/gameplay/combat/. Here's what I found:
        [Shows mechanics, formulas, unclear areas]
 
        Before drafting, could you clarify:
@@ -230,11 +230,11 @@ User: 1. Stamina is for pacing, prevent button mashing
 Agent: Perfect, that clarifies the vision. Let me draft the design doc.
        [Shows draft with clarified intent]
 
-       May I write this to Assets/App docs/combat-system.md?
+       May I write this to docs/app design docs/combat-system.md?
 
 User: Yes, write it.
 
-Agent: ✅ Written to Assets/App docs/combat-system.md
+Agent: ✅ Written to docs/app design docs/combat-system.md
        ✅ Marked as [REVERSE-DOCUMENTED]
        ✅ Flagged damage scaling for rebalancing
 

@@ -5,20 +5,18 @@ argument-hint: "[new|update|status]"
 user-invocable: true
 allowed-tools: Read, Glob, Grep, Write, Edit
 context: |
-  !ls production/sprints/ 2>/dev/null
+  !ls docs/app design docs/ 2>/dev/null
 ---
 
 When this skill is invoked:
 
-1. **Read the current milestone** from `production/milestones/`.
+1. **Read the current milestone** from `docs/production/milestones/`.
 
-2. **Read the previous sprint** (if any) from `production/sprints/` to
-   understand velocity and carryover.
+2. **Read the previous sprint** (if any) from `docs/app design docs/` to understand velocity and carryover.
 
-3. **Scan design documents** in `Assets/App docs/` for features tagged as ready
-   for implementation.
+3. **Scan design documents** in `docs/app design docs/` for features tagged as ready for implementation.
 
-4. **Check the risk register** at `production/risk-register/`.
+4. **Check the risk register** at `docs/production/risk-register/`.
 
 For `new`:
 

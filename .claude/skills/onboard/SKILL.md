@@ -14,11 +14,11 @@ When this skill is invoked:
    role is specified.
 
 3. **Scan the codebase** for the relevant area:
-   - For programmers: scan `src/` for architecture, patterns, key files
-   - For designers: scan `design/` for existing design documents
+   - For programmers: scan `Assets/Scripts/` for architecture, patterns, key files
+   - For designers: scan `Assets/Textures/` for existing design documents
    - For narrative: scan `design/narrative/` for world-building and story docs
    - For QA: scan `tests/` for existing test coverage
-   - For production: scan `production/` for current sprint and milestone
+   - For production: scan `docs/production/` for current sprint and milestone
 
 4. **Read recent changes** (git log if available) to understand current momentum.
 

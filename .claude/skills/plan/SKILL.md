@@ -20,7 +20,7 @@ When this skill is invoked:
 3. **Research before designing**:
    - Check Unity 6.x docs, XRI docs, OpenXR spec for existing solutions
    - Search the codebase for related implementations
-   - Check if the self-developed SDK already provides relevant APIs
+   - Check if the SDK already provides relevant APIs
    - Prefer adopting proven patterns over writing net-new code
 
 4. **Create step-by-step plan**:

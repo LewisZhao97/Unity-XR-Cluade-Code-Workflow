@@ -48,7 +48,7 @@
 
 | Command | Purpose |
 |---------|---------|
-| `/start` | First-time project onboarding — detects state, guides you |
+| `/start-harness` | Discover project, ensure CLAUDE.md harness compliance, route to workflow |
 | `/onboard` | Generate onboarding doc for a new contributor or role |
 | `/project-stage-detect` | Auto-detect project stage, identify gaps, recommend next steps |
 | `/team-ui` | Orchestrate UX designer + UI programmer + art review |

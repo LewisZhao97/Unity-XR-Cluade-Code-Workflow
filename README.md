@@ -140,17 +140,15 @@ echo "docs/unity" >> .gitignore
 # 5. Launch Claude Code
 claude
 
-# 6. Run /init to customize CLAUDE.md for your project or create from scratch
-/init
-
-# 7. Run /start to let Claude Code to detect your project state
-/start
+# 6. Run /start-harness — discovers your project, generates or audits CLAUDE.md, then routes you
+/start-harness
 ```
 
-`/start` detects your project state and routes you to the right workflow.
+`/start-harness` is the single entry point. It scans your Unity project (version, XR packages, SDK, scripts), generates a harness-compliant `CLAUDE.md` if none exists (or audits and fixes an existing one), then routes you to the right workflow.
 
-> **Note:** The `CLAUDE.md` in this repo is written for developing this workflow itself.
-> Copy it as a starting template, then customize it for your project via `/init` or manually.
+> **Tip:** You can also use Claude Code's built-in `/init` to generate a basic `CLAUDE.md`,
+> or copy `ClaudeWorkflow/CLAUDE.md` as a starting template. `/start-harness` produces
+> the most harness-compliant result because it enforces all required sections.
 
 ### Option B — Direct Copy (simple, no upstream updates)
 
@@ -347,7 +345,7 @@ xr-specialist (authority)
 ### Onboarding & Team
 | Command | Purpose |
 |---------|---------|
-| `/start` | First-time project onboarding |
+| `/start-harness` | Discover project, ensure CLAUDE.md harness compliance, route to workflow |
 | `/onboard` | Generate onboarding doc for a new contributor |
 | `/team-ui` | Orchestrate UX designer + UI programmer + art review |
 | `/team-release` | Orchestrate release manager + QA + DevOps + producer |

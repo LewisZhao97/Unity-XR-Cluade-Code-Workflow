@@ -4,7 +4,7 @@
 
 A pre-built Claude Code workflow for Unity XR development. It provides 29 specialist
 agents, 27 slash commands, 25 auto-loaded rules, and 8 lifecycle hooks — all tuned
-for developing XR applications targeting self-developed XR glasses and PC streaming.
+for developing XR applications targeting XR glasses and PC streaming.
 
 ## How to Use
 
@@ -48,7 +48,7 @@ Three tiers of agents, from strategic to tactical:
 
 | Command | What it does |
 |---------|-------------|
-| `/start` | First-time onboarding — detects project state, guides you |
+| `/start-harness` | Discover project, ensure CLAUDE.md harness compliance, route to workflow |
 | `/plan` | Create implementation plan (waits for confirmation) |
 | `/code-review` | Review code for quality and architecture |
 | `/xr-test` | Generate XR interaction and comfort tests |
@@ -73,8 +73,8 @@ See `skills-reference.md` for the full list of 27 commands.
 
 ## First Steps
 
-**Don't know where to begin?** Run `/start`. It detects your project state and
-routes you to the right workflow.
+**Don't know where to begin?** Run `/start-harness`. It discovers your project,
+ensures CLAUDE.md is harness-compliant, and routes you to the right workflow.
 
 ### Path A: Starting a New XR Feature
 
@@ -87,7 +87,7 @@ routes you to the right workflow.
 
 ### Path B: Existing Project, First Time Using This Workflow
 
-1. Run `/start` or `/project-stage-detect` — analyzes what exists, identifies gaps
+1. Run `/start-harness` or `/project-stage-detect` — analyzes what exists, identifies gaps
 2. Run `/gate-check` to validate phase readiness
 3. Run `/sprint-plan new` to plan next work
 

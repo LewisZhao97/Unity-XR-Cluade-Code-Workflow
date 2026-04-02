@@ -1,6 +1,6 @@
 ---
 name: build-platform
-description: "Unity XR build management: configure, validate, and trigger builds for self-developed XR glasses (standalone Android) and PC streaming targets. Checks platform-specific settings, quality levels, and Addressables groups."
+description: "Unity XR build management: configure, validate, and trigger builds for XR glasses (standalone Android) and PC streaming targets. Checks platform-specific settings, quality levels, and Addressables groups."
 argument-hint: "[glasses|pc-streaming|all|validate]"
 user-invocable: true
 allowed-tools: Read, Glob, Grep, Bash
@@ -31,7 +31,7 @@ When this skill is invoked:
    - [ ] OpenXR features: hand tracking (if needed)
    - [ ] Fixed Foveated Rendering configured
    - [ ] Quality level appropriate for mobile GPU
-   - [ ] Self-developed SDK package installed and configured
+   - [ ] SDK package installed and configured
 
    **PC Streaming (Windows)**:
    - [ ] DirectX 11/12 or Vulkan selected

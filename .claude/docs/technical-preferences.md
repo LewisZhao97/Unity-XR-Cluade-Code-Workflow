@@ -7,8 +7,8 @@
 - **Render Pipeline**: URP (Universal Render Pipeline)
 - **Rendering**: Single Pass Instanced (mandatory for XR)
 - **XR Framework**: XR Interaction Toolkit (XRI)
-- **XR Runtime**: Self-developed OpenXR runtime (native `.aar`)
-- **SDK**: Self-developed XR SDK (UPM package)
+- **XR Runtime**: OpenXR runtime (native `.aar`)
+- **SDK**: XR SDK (UPM package)
 
 ## Naming Conventions (Unity Style)
 
@@ -50,7 +50,7 @@
 ## Allowed Libraries / Packages
 
 - Unity XR Interaction Toolkit (XRI)
-- Self-developed XR SDK (UPM)
+- XR SDK (UPM)
 - UniTask (if available, for async/await)
 - Unity Test Framework
 

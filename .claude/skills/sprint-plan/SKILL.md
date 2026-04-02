@@ -16,11 +16,13 @@ When this skill is invoked:
 
 3. **Scan design documents** in `docs/app design docs/` for features tagged as ready for implementation.
 
-4. **Check the risk register** at `docs/production/risk-register/`.
+4. **Check the risk register** at `docs/production/risk-register/`
+   (format: `.claude/docs/templates/risk-register-entry.md`).
 
 For `new`:
 
-5. **Generate a sprint plan** following this format:
+5. **Generate a sprint plan** using the template at
+   `.claude/docs/templates/sprint-plan.md`, following this format:
 
 ```markdown
 # Sprint [N] -- [Start Date] to [End Date]

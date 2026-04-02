@@ -40,7 +40,8 @@ When this skill is invoked:
    - **Balance Changes**: Tuning of gameplay values, difficulty, economy
    - **Known Issues**: Issues the team is aware of but have not yet resolved
 
-6. **Generate the INTERNAL changelog** (full technical detail):
+6. **Generate the INTERNAL changelog** using the template at
+   `.claude/docs/templates/changelog-template.md` (full technical detail):
 
 ```markdown
 # Internal Changelog: [Version]
@@ -83,7 +84,8 @@ Commits: [Count] ([first-hash]..[last-hash])
 - Lines removed: [N]
 ```
 
-7. **Generate the PLAYER-FACING changelog** (friendly, non-technical):
+7. **Generate the PLAYER-FACING changelog** using the template at
+   `.claude/docs/templates/release-notes.md` (friendly, non-technical):
 
 ```markdown
 # What is New in [Version]

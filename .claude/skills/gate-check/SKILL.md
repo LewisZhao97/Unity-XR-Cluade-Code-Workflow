@@ -57,7 +57,7 @@ The project progresses through these stages:
 ### Gate: Systems Design → Technical Setup
 
 **Required Artifacts:**
-- [ ] Systems index exists at `docs/app design docs/systems-index.md` with at least MVP systems enumerated
+- [ ] Systems index exists at `docs/app design docs/systems-index.md` (format: `.claude/docs/templates/systems-index.md`) with at least MVP systems enumerated
 - [ ] At least 1 GDD in `docs/app design docs/` (beyond game-concept.md and systems-index.md)
 
 **Quality Checks:**
@@ -72,7 +72,7 @@ The project progresses through these stages:
 **Required Artifacts:**
 - [ ] Engine chosen (CLAUDE.md Technology Stack is not `[CHOOSE]`)
 - [ ] Technical preferences configured (`.claude/docs/technical-preferences.md` populated)
-- [ ] At least 1 Architecture Decision Record in `docs/architecture/`
+- [ ] At least 1 Architecture Decision Record in `docs/app design docs/`
 - [ ] Engine reference docs exist in `docs/engine-reference/`
 
 **Quality Checks:**
@@ -181,7 +181,7 @@ For items that can't be automatically verified, **ask the user**:
 
 ### Required Artifacts: [X/Y present]
 - [x] docs/app design docs/game-concept.md — exists, 2.4KB
-- [ ] docs/architecture/ — MISSING (no ADRs found)
+- [ ] docs/app design docs/ — MISSING (no ADRs found)
 - [x] docs/app design docs/ — exists, 1 sprint plan
 
 ### Quality Checks: [X/Y passing]

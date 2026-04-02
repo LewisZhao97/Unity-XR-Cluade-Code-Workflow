@@ -8,7 +8,8 @@ allowed-tools: Read, Glob, Grep, Write
 
 When this skill is invoked:
 
-1. **Read the milestone definition** from `docs/production/milestones/`.
+1. **Read the milestone definition** from `docs/production/milestones/`
+   (format: `.claude/docs/templates/milestone-definition.md`).
 
 2. **Read all sprint reports** for sprints within this milestone from
    `docs/app design docs/`.

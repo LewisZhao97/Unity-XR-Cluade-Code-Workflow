@@ -188,18 +188,60 @@ Ground the concept in reality:
 
 ---
 
-4. **Generate the game concept document** using the template at
+### Phase 7: Architecture Overview
+
+Translate the concept into a high-level code architecture. This bridges design
+and implementation — developers use this as the blueprint before writing code.
+
+Using the template at `.claude/docs/templates/technical-design-document.md`,
+collaboratively define:
+
+- **System decomposition**: What major systems does this app need?
+  (e.g., XR Interaction, Session Management, Progression, UI, Audio)
+- **Component breakdown**: For each system, what are the key components
+  and their responsibilities?
+- **Data flow**: How does data move between systems during a typical frame?
+- **Dependencies**: Which systems depend on which? What's the build order?
+- **XR-specific architecture**: Input pipeline (OpenXR → XRI → app logic),
+  rendering pipeline (URP, Single Pass Instanced), spatial anchoring
+- **Implementation phases**: What to build first (MVP), second, third?
+
+Ask the user about:
+- Preferred architecture patterns (ECS vs MonoBehaviour, event-driven vs polling)
+- Existing code or packages to integrate
+- Performance-critical paths that need special attention
+
+---
+
+## Document Generation
+
+After all phases are complete, generate **3 documents**:
+
+4. **Game Concept Document** — using the template at
    `.claude/docs/templates/game-concept.md`. Fill in ALL sections from the
    brainstorm conversation, including the MDA analysis, player motivation
    profile, and flow state design sections.
+   **Save to** `docs/app design docs/game-concept.md`.
 
-5. **Save to** `docs/app design docs/game-concept.md`, creating directories as needed.
+5. **Game Pillars Document** — using the template at
+   `.claude/docs/templates/game-pillars.md`. Fill in pillars, anti-pillars,
+   conflict resolution priority, MDA aesthetics ranking, SDT alignment, and
+   emotional arc from Phase 4 discussion.
+   **Save to** `docs/app design docs/game-pillars.md`.
 
-6. **Suggest next steps** (in this order — this is the professional studio
-   pre-production pipeline):
-   - "Use `/design-review docs/app design docs/game-concept.md` to validate completeness"
+6. **Game Architecture Document** — using the template at
+   `.claude/docs/templates/technical-design-document.md`. Fill in system
+   decomposition, component breakdown, data flow, dependencies, and
+   implementation phases from Phase 7 discussion.
+   **Save to** `docs/app design docs/game-architecture.md`.
+
+Create the `docs/app design docs/` directory if needed. Ask for approval
+before writing each document.
+
+7. **Suggest next steps**:
+   - "Use `/design-review` to validate each document"
    - "Prototype the core loop with `/prototype [core-mechanic]`"
    - "If validated, plan the first sprint with `/sprint-plan new`"
 
-7. **Output a summary** with the chosen concept's elevator pitch, pillars,
-   primary player type, engine recommendation, biggest risk, and file path.
+8. **Output a summary** with the chosen concept's elevator pitch, pillars,
+   primary player type, biggest risk, and paths to all 3 documents.

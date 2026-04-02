@@ -45,7 +45,7 @@ Analyze project structure and content:
 - Check for READMEs (documented vs undocumented)
 - Assess if prototypes are archived or active
 
-**Architecture Docs** (`docs/architecture/`):
+**Architecture Docs** (`docs/app design docs/`):
 - Count ADRs (Architecture Decision Records)
 - Check for overview/index documents
 

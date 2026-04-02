@@ -123,7 +123,7 @@ Based on type, use appropriate template:
 | Type | Template | Output Path |
 |------|----------|-------------|
 | `design` | `templates/design-doc-from-implementation.md` | `docs/app design docs/[system-name].md` |
-| `architecture` | `templates/architecture-doc-from-code.md` | `docs/architecture/[decision-name].md` |
+| `architecture` | `templates/architecture-doc-from-code.md` | `docs/app design docs/[decision-name].md` |
 | `concept` | `templates/concept-doc-from-prototype.md` | `prototypes/[name]/CONCEPT.md` or `design/concepts/[name].md` |
 
 **Draft structure**:

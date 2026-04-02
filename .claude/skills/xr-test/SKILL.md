@@ -15,7 +15,8 @@ When this skill is invoked:
    - `full` — comprehensive XR test suite
    - System name — focused tests for a specific XR system
 
-2. **Analyze existing test coverage**:
+2. **Analyze existing test coverage** (test plan format:
+   `.claude/docs/templates/test-plan.md`):
    - Glob for test files in `Assets/Tests/`
    - Check for `XRDeviceSimulator` usage in Play Mode tests
    - Identify untested XR interaction paths

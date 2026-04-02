@@ -16,7 +16,9 @@ When this skill is invoked:
 2. **Read CLAUDE.md** for project context, version information, and platform
    targets.
 
-3. **Read the current milestone** from `docs/production/milestones/` to understand
+3. **Read the current milestone** (using the template at
+   `.claude/docs/templates/release-checklist-template.md` for output) from
+   `docs/production/milestones/` to understand
    what features and content should be included in this release.
 
 4. **Scan the codebase** for outstanding issues:

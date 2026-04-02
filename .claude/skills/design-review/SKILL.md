@@ -15,7 +15,8 @@ When this skill is invoked:
 3. **Read related design documents** referenced or implied by the target doc
    (check `docs/app design docs/` for related systems).
 
-4. **Evaluate against the Design Document Standard checklist**:
+4. **Evaluate against the Design Document Standard** (defined in
+   `.claude/docs/templates/game-design-document.md`) checklist:
    - [ ] Has Overview section (one-paragraph summary)
    - [ ] Has Player Fantasy section (intended feeling)
    - [ ] Has Detailed Rules section (unambiguous mechanics)

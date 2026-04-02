@@ -8,7 +8,7 @@ allowed-tools: Read, Glob, Grep, Write
 
 When this skill is invoked:
 
-1. **Determine the next ADR number** by scanning `docs/architecture/` for
+1. **Determine the next ADR number** by scanning `docs/app design docs/` for
    existing ADRs.
 
 2. **Gather context** by reading related code and existing ADRs.
@@ -16,7 +16,8 @@ When this skill is invoked:
 3. **Guide the user through the decision** by asking clarifying questions if
    the title alone is not sufficient.
 
-4. **Generate the ADR** following this format:
+4. **Generate the ADR** using the template at
+   `.claude/docs/templates/architecture-decision-record.md`, following this format:
 
 ```markdown
 # ADR-[NNNN]: [Title]
@@ -97,4 +98,4 @@ to implement it.]
 - [Links to related design documents]
 ```
 
-5. **Save the ADR** to `docs/architecture/adr-[NNNN]-[slug].md`.
+5. **Save the ADR** to `docs/app design docs/adr-[NNNN]-[slug].md`.

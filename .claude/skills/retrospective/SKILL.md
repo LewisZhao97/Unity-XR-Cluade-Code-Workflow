@@ -13,7 +13,8 @@ When this skill is invoked:
 1. **Read the argument** to determine whether this is a sprint retrospective
    (`sprint-N`) or a milestone retrospective (`milestone-name`).
 
-2. **Read the sprint or milestone plan** from the appropriate location:
+2. **Read the sprint or milestone plan** (using format from
+   `.claude/docs/templates/post-mortem.md` for output) from the appropriate location:
    - Sprint plans: `docs/app design docs/`
    - Milestone definitions: `docs/production/milestones/`
 

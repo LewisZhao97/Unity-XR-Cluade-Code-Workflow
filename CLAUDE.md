@@ -1,4 +1,4 @@
-# Unity XR Project Instructions
+# XRStack — Unity XR Project Instructions
 
 ## Project Identity
 

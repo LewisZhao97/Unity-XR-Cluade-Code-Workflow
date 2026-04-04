@@ -98,7 +98,7 @@ If CLAUDE.md passes all checks, say so briefly and move to Step 3.
 
 ## Step 3 — Route to Workflow
 
-> **Welcome to Unity XR Studio!**
+> **Welcome to XRStack!**
 >
 > [Summarize what was detected: Unity version, XR packages, project size]
 >

@@ -2,7 +2,7 @@
 # Claude Code SessionStart hook: Load Unity XR project context
 # Outputs context information that Claude sees when a session begins
 
-echo "=== Unity XR Studio — Session Context ==="
+echo "=== XRStack — Session Context ==="
 
 # Current branch
 BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)

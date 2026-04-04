@@ -1,0 +1,22 @@
+{
+  "name": "xrstack",
+  "description": "Claude Code harness for Unity XR development — 30 agents, 43 skills, 25 rules, and 8 hooks tuned for XR.",
+  "version": "0.0.1",
+  "author": {
+    "name": "Lewis",
+    "url": "https://github.com/LewisZhao97"
+  },
+  "homepage": "https://github.com/LewisZhao97/XRStack",
+  "repository": "https://github.com/LewisZhao97/XRStack",
+  "license": "MIT",
+  "keywords": [
+    "Unity",
+    "xr",
+    "agents",
+    "skills",
+    "harness",
+    "engineering",
+    "tools",
+    "claude-code"
+  ]
+}

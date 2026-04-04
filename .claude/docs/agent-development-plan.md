@@ -1,4 +1,4 @@
-# Unity XR Studio — Workflow Plan
+# XRStack — Development Plan
 
 ## Status Legend
 
@@ -279,7 +279,7 @@ The following were removed as irrelevant to Unity XR development:
 ## 10. Priority Roadmap
 
 ### Phase 1 — Complete ✅
-Foundation, all 30 agents, 43 skills, 25 rules, 8+2 hooks, 18 templates, 3 scripts, session management, continuous learning system, verification loop, eval harness, brainstorm/design-review workflows.
+Foundation, all 30 agents, 43 skills, 25 rules, 8+2 hooks, 18 templates, 3 scripts, session management, continuous learning system, verification loop, eval harness, brainstorm/design-review workflows. Claude Code plugin format (`.claude-plugin/plugin.json` + `marketplace.json`) for distribution.
 
 ### Phase 2 — Near-term (XR depth)
 Add `/xr-comfort-check`, `/scene-audit`, `/shader-review` skills. Add `openxr-runtime.md` and `sdk-api.md` rules. Add `.meta` file and `.asmdef` validation hooks.

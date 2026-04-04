@@ -1,9 +1,9 @@
 <p align="center">
-  <h1 align="center">Unity XR Claude Code Workflow</h1>
+  <h1 align="center">XRStack</h1>
   <p align="center">
-    A pre-built <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a> workflow for Unity XR development.
+    A pre-built <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a> harness for Unity XR development.
     <br />
-    Drop it into any Unity project and get 30 specialist agents, 43 slash commands, 25 auto-loaded rules, and 8 lifecycle hooks — all tuned for XR development.
+    30 specialist agents, 43 slash commands, 25 auto-loaded rules, and 8 lifecycle hooks — all tuned for XR.
   </p>
 </p>
 
@@ -15,7 +15,8 @@
   <a href=".claude/rules"><img src="https://img.shields.io/badge/rules-25-red" alt="25 Rules"></a>
   <a href=".claude/mcps"><img src="https://img.shields.io/badge/mcps-under_construction-steelblue" alt="coming.."></a>
   <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/built_for-Claude_Code-goldenrod?logo=anthropic" alt="Built for Claude Code"></a>
-  <a href=".claude/rules"><img src="https://img.shields.io/badge/status-experimental-chocolate" alt="Experimental"></a>
+  <a><img src="https://img.shields.io/badge/status-experimental-chocolate" alt="Experimental"></a>
+  <a><img src="https://img.shields.io/badge/version-v0.0.1-darkkhaki" alt="v0.0.1"></a>
 </p>
 
 ## Why This Exists
@@ -38,7 +39,7 @@ Most teams stop at layer 1 and wonder why results are inconsistent:
 2. **Context Engineering** (what to know) — feeding the right information at the right time. Better, but still passive.
 3. **Harness Engineering** (how to stay correct) — the feedback loop that catches drift and pulls the agent back. This is where production reliability lives.
 
-This workflow operates at **layer 3**.
+XRStack operates at **layer 3**.
 
 ### What Is Harness Engineering?
 
@@ -53,7 +54,7 @@ Goal State + Sensor + Actuator + Feedback Loop = Control System
 - **Without actuators**, it can't fix what it finds (no agents = no specialist correction)
 - **Without feedback**, it repeats the same mistakes forever (no rules = no learning)
 
-A documented convention will be violated. A lint rule won't. This workflow pushes constraints as high up the enforcement hierarchy as possible:
+A documented convention will be violated. A lint rule won't. XRStack pushes constraints as high up the enforcement hierarchy as possible:
 
 | Layer | Mechanism | Reliability |
 |-------|-----------|-------------|
@@ -65,7 +66,7 @@ A documented convention will be violated. A lint rule won't. This workflow pushe
 
 The engineer's role shifts from writing code to **designing the control system** that lets agents write code correctly. You steer; the agent executes.
 
-### What This Workflow Provides
+### What XRStack Provides
 
 - **Encodes XR knowledge** — frame budgets, draw call limits, GC-free hot paths, stereo rendering constraints
 - **Enforces conventions** — Unity-style naming (`m_Field`, `k_Constant`, `s_Static`), Allman braces, commit message format
@@ -126,27 +127,44 @@ The engineer's role shifts from writing code to **designing the control system**
   - Python 3 (for JSON validation, continuous learning observation hooks)
   - [Node.js](https://nodejs.org/) (for session management scripts)
 
-### Option A — Git Submodule (recommended for teams)
+### Option A — Claude Code Plugin (recommended)
 
-Keep this workflow as a separate repo inside your Unity project, linked via symlink:
+Install XRStack as a Claude Code plugin with automatic updates:
+
+```bash
+# 1. Add the XRStack marketplace
+/plugin marketplace add LewisZhao97/XRStack
+
+# 2. Install the plugin
+/plugin install xrstack@xrstack
+
+# 3. Skills become available with namespace prefix
+/xrstack:plan
+/xrstack:code-review
+/xrstack:xr-test
+```
+
+### Option B — Git Submodule (recommended for teams)
+
+Keep XRStack as a separate repo inside your Unity project, linked via symlink:
 
 ```bash
 # 1. Add as submodule
 cd YourUnityProject/
-git submodule add <this-repo-url> ClaudeWorkflow
+git submodule add <this-repo-url> XRStack
 
 # 2. Create symlink to .claude/ (Windows — requires Developer Mode)
-mklink /D .claude ClaudeWorkflow\.claude
+mklink /D .claude XRStack\.claude
 
 # On Windows without Developer Mode, use a junction instead:
-# mklink /J .claude ClaudeWorkflow\.claude
+# mklink /J .claude XRStack\.claude
 
 # On macOS/Linux:
-# ln -s ClaudeWorkflow/.claude .claude
+# ln -s XRStack/.claude .claude
 
 # 3. Optional
 # Copy CLAUDE.md as a starting template (customize for your project)
-cp ClaudeWorkflow/CLAUDE.md ./CLAUDE.md
+cp XRStack/CLAUDE.md ./CLAUDE.md
 
 # 4. Add to .gitignore
 echo ".claude" >> .gitignore
@@ -162,19 +180,19 @@ claude
 `/start-harness` is the single entry point. It scans your Unity project (version, XR packages, SDK, scripts), generates a harness-compliant `CLAUDE.md` if none exists (or audits and fixes an existing one), then routes you to the right workflow.
 
 > **Tip:** You can also use Claude Code's built-in `/init` to generate a basic `CLAUDE.md`,
-> or copy `ClaudeWorkflow/CLAUDE.md` as a starting template. `/start-harness` produces
+> or copy `XRStack/CLAUDE.md` as a starting template. `/start-harness` produces
 > the most harness-compliant result because it enforces all required sections.
 
-### Option B — Direct Copy (simple, no upstream updates)
+### Option C — Direct Copy (simple, no upstream updates)
 
 ```bash
-cp -r ClaudeWorkflow/.claude YourUnityProject/.claude
+cp -r XRStack/.claude YourUnityProject/.claude
 
 # template — customize for your project
-cp ClaudeWorkflow/CLAUDE.md YourUnityProject/CLAUDE.md
+cp XRStack/CLAUDE.md YourUnityProject/CLAUDE.md
 
 # Optional: copy Unity API reference docs
-cp -r ClaudeWorkflow/docs YourUnityProject/docs
+cp -r XRStack/docs YourUnityProject/docs
 ```
 
 ## Project Structure
@@ -182,7 +200,10 @@ cp -r ClaudeWorkflow/docs YourUnityProject/docs
 ### This Repo
 
 ```
-ClaudeWorkflow/
+XRStack/
+├── .claude-plugin/
+│   ├── plugin.json             # Plugin metadata (name, version, author)
+│   └── marketplace.json        # Self-hosted marketplace definition
 ├── .claude/
 │   ├── settings.json           # Permissions, hooks, safety rules
 │   ├── agents/                 # 30 specialist agent definitions
@@ -204,9 +225,9 @@ ClaudeWorkflow/
 
 ```
 YourUnityProject/
-├── .claude                             # agents, skills, rules
+├── .claude                             # agents, skills, rules (symlink or copy)
 ├── docs
-│   └── app design docs/                # Game design artifacts (from /brainstorm)
+│   └── app design docs/                # Design artifacts (from /brainstorm)
 ├── CLAUDE.md                           # Your project's instructions
 ├── Assets/
 │   ├── Scripts/
@@ -463,7 +484,7 @@ These hooks power the continuous learning system. `observe.sh` captures tool usa
 
 ### 1. Harness, Not Prompts
 
-Telling the agent "use Unity conventions" in every message doesn't scale. This workflow encodes constraints into **rules** (auto-loaded), **hooks** (auto-enforced), and **settings** (permissions). The agent follows conventions because the harness makes it the path of least resistance.
+Telling the agent "use Unity conventions" in every message doesn't scale. XRStack encodes constraints into **rules** (auto-loaded), **hooks** (auto-enforced), and **settings** (permissions). The agent follows conventions because the harness makes it the path of least resistance.
 
 ### 2. Specialist Over Generalist
 
@@ -475,7 +496,7 @@ A single Claude session answering XR questions, reviewing code, and planning spr
 
 ### 4. Mechanical Enforcement Over Documentation
 
-A documented convention will be violated. A lint rule won't. This workflow pushes constraints as high up the enforcement hierarchy as possible:
+A documented convention will be violated. A lint rule won't. XRStack pushes constraints as high up the enforcement hierarchy as possible:
 
 1. **settings.json deny-list** — impossible to violate (blocked commands)
 2. **Hooks** — caught before commit/push
@@ -578,7 +599,7 @@ The `paths` frontmatter controls when the rule loads. Omit it for always-on rule
 5. Keep everything else — the Unity engine specialists, coding standards, review workflow, and production tools are engine-agnostic
 
 > [!NOTE]
-> This workflow is in active development. The current release covers agents, skills, rules, and hooks.
+> XRStack is in active development. The current release covers agents, skills, rules, and hooks.
 > Upcoming additions include MCP server integrations, more XR-specific validation tools, and expanded
 > platform coverage. Contributions and feedback are welcome.
 

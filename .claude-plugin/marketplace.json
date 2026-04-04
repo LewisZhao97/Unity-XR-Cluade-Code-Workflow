@@ -1,0 +1,29 @@
+{
+  "name": "xrstack",
+  "description": "Unity XR development tools for Claude Code",
+  "owner": {
+    "name": "Lewis",
+    "email": "lewisphotograph@gmail.com"
+  },
+  "metadata": {
+    "description": "Claude Code harness for Unity XR development — 30 agents, 43 skills, 25 rules, and 8 hooks tuned for XR.",
+    "version": "0.0.1"
+  },
+  "plugins": [
+    {
+      "name": "xrstack",
+      "version": "0.0.1",
+      "source": "./",
+      "description": "Claude Code harness for Unity XR development — 30 agents, 43 skills, 25 rules, and 8 hooks tuned for XR.",
+      "category": "agents",
+      "tags": [
+        "Unity",
+        "xr",
+        "agents",
+        "tools",
+        "harness",
+        "engineering"
+      ]
+    }
+  ]
+}

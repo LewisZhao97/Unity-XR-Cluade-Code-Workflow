@@ -13,7 +13,7 @@
   <a href=".claude/skills"><img src="https://img.shields.io/badge/skills-43-green" alt="43 Skills"></a>
   <a href=".claude/hooks"><img src="https://img.shields.io/badge/hooks-8+2-darkcyan" alt="8+2 Hooks"></a>
   <a href=".claude/rules"><img src="https://img.shields.io/badge/rules-25-red" alt="25 Rules"></a>
-  <a href=".claude/mcps"><img src="https://img.shields.io/badge/mcps-under_construction-steelblue" alt="coming.."></a>
+  <a href=".mcp.json"><img src="https://img.shields.io/badge/mcps-5-steelblue" alt="5 MCPs"></a>
   <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/built_for-Claude_Code-goldenrod?logo=anthropic" alt="Built for Claude Code"></a>
   <a><img src="https://img.shields.io/badge/status-experimental-chocolate" alt="Experimental"></a>
   <a><img src="https://img.shields.io/badge/version-v0.0.1-darkkhaki" alt="v0.0.1"></a>
@@ -86,6 +86,7 @@ The engineer's role shifts from writing code to **designing the control system**
 - [Slash Commands (43)](#slash-commands-43)
 - [Rules (25)](#rules-25)
 - [Hooks (8 + 2 optional)](#hooks-8--2-optional)
+- [MCP Servers (5)](#mcp-servers-5)
 - [Design Philosophy](#design-philosophy)
 - [Customization](#customization)
 - [License](#license)
@@ -101,6 +102,7 @@ The engineer's role shifts from writing code to **designing the control system**
 | **Scripts** | 3 | Node.js session management utilities |
 | **Templates** | 18 | Document templates for design, production, and release artifacts |
 | **CLAUDE.md** | 1 | Project-wide instructions loaded every conversation |
+| **MCP Servers** | 5 | GitHub, Context7 (docs), Exa (search), Figma, Unity MCP |
 | **settings.json** | 1 | Permissions, hook wiring, safety deny-list |
 
 ## Documentations
@@ -142,6 +144,21 @@ Install XRStack as a Claude Code plugin with automatic updates:
 /xrstack:plan
 /xrstack:code-review
 /xrstack:xr-test
+```
+
+> **Note:** Claude Code plugins auto-load agents and skills but NOT rules.
+> Run the installer to copy rules to `~/.claude/rules/`:
+
+```bash
+# 4. Install rules (pick one)
+# Bash (macOS/Linux/Git Bash):
+bash ~/.claude/plugins/marketplaces/xrstack/install.sh
+
+# PowerShell (Windows):
+& "$env:USERPROFILE\.claude\plugins\marketplaces\xrstack\install.ps1"
+
+# Preview without copying:
+bash ~/.claude/plugins/marketplaces/xrstack/install.sh --dry-run
 ```
 
 ### Option B — Git Submodule (recommended for teams)
@@ -186,12 +203,13 @@ claude
 ### Option C — Direct Copy (simple, no upstream updates)
 
 ```bash
+# 1. Copy the full .claude folder to you project's root
 cp -r XRStack/.claude YourUnityProject/.claude
 
-# template — customize for your project
+# 2. Template — customize for your project
 cp XRStack/CLAUDE.md YourUnityProject/CLAUDE.md
 
-# Optional: copy Unity API reference docs
+# 3. Optional: copy Unity API reference docs
 cp -r XRStack/docs YourUnityProject/docs
 ```
 
@@ -217,6 +235,7 @@ XRStack/
 │   └── docs/
 │       ├── templates/          # 18 document templates
 │       └── unity-references/   # Unity API reference docs
+├── .mcp.json                   # MCP server configuration (5 servers)
 ├── CLAUDE.md                   # Template — copy to your project root and customize
 └── README.md
 ```
@@ -480,6 +499,38 @@ Rules auto-load based on file path patterns. You never invoke them manually.
 
 These hooks power the continuous learning system. `observe.sh` captures tool usage patterns into project-scoped observation logs. A background observer (optional, uses Haiku) analyzes observations and creates atomic "instincts" — small learned behaviors with confidence scoring. See [Hooks Reference](.claude/docs/hooks-reference.md) for setup instructions.
 
+## MCP Servers (5)
+
+XRStack includes a `.mcp.json` with pre-configured MCP servers for Unity XR development.
+
+| Server | Type | Purpose |
+|--------|------|---------|
+| `github` | stdio | GitHub operations — PRs, issues, code search, repo management |
+| `context7` | stdio | Live documentation lookup — Unity, XRI, OpenXR, and any library |
+| `exa` | HTTP | Web search and research — find patterns, docs, solutions |
+| `figma` | HTTP | Figma design integration |
+| `unityMCP` | HTTP | **Unity Editor bridge** — 42 tools for scene, assets, scripts, profiling, builds |
+
+### Unity MCP Setup
+
+The `unityMCP` server connects Claude Code directly to your running Unity Editor via [MCP for Unity](https://github.com/CoplayDev/unity-mcp). It provides tools for scene management, profiling, builds, testing, and more.
+
+**Setup:**
+1. In Unity: `Window > Package Manager > + > Add package from git URL`:
+   ```
+   https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main
+   ```
+2. In Unity: `Window > MCP for Unity > Start Server`
+3. Restart Claude Code — `unityMCP` tools will appear automatically
+
+The default port is `8080` (configurable in Unity's `Window > MCP for Unity` advanced settings). If you change the port, update the URL in `.mcp.json` to match.
+
+> **Note:** `unityMCP` requires Unity Editor to be running. The other 4 MCPs work independently.
+
+### Windows Note
+
+On Windows, stdio-based MCP servers (`github`, `context7`) require `cmd /c` wrapper for `npx`. This is already configured in the included `.mcp.json`.
+
 ## Design Philosophy
 
 ### 1. Harness, Not Prompts
@@ -599,9 +650,9 @@ The `paths` frontmatter controls when the rule loads. Omit it for always-on rule
 5. Keep everything else — the Unity engine specialists, coding standards, review workflow, and production tools are engine-agnostic
 
 > [!NOTE]
-> XRStack is in active development. The current release covers agents, skills, rules, and hooks.
-> Upcoming additions include MCP server integrations, more XR-specific validation tools, and expanded
-> platform coverage. Contributions and feedback are welcome.
+> XRStack is in active development. The current release covers agents, skills, rules, hooks, and MCP integrations.
+> Upcoming additions include more XR-specific validation tools and expanded platform coverage.
+> Contributions and feedback are welcome.
 
 ## License
 

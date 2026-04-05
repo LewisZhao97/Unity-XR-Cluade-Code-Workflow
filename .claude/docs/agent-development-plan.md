@@ -237,7 +237,23 @@
 
 ---
 
-## 8. Documentation (.claude/docs/)
+## 8. MCP Servers (5 active)
+
+### Active Servers
+- [x] `github` — GitHub operations (PRs, issues, code search, repo management)
+- [x] `context7` — Live documentation lookup (Unity, XRI, OpenXR, any library)
+- [x] `exa` — Web search and research
+- [x] `figma` — Figma design integration
+- [x] `unityMCP` — Unity Editor bridge via [MCP for Unity](https://github.com/CoplayDev/unity-mcp) (42 tools: scene, assets, scripts, profiling, builds)
+
+### Potential Future MCP Servers
+- [ ] OpenXR conformance test server — run OpenXR CTS from Claude
+- [ ] Unity Cloud Build integration — trigger/monitor cloud builds
+- [ ] Package registry server — search/install UPM packages
+
+---
+
+## 9. Documentation (.claude/docs/)
 
 ### Existing
 - [x] `agent-coordination-map.md` — Agent hierarchy and delegation
@@ -264,7 +280,7 @@
 
 ---
 
-## 9. Removed Content
+## 10. Removed Content
 
 The following were removed as irrelevant to Unity XR development:
 
@@ -276,10 +292,10 @@ The following were removed as irrelevant to Unity XR development:
 
 ---
 
-## 10. Priority Roadmap
+## 11. Priority Roadmap
 
 ### Phase 1 — Complete ✅
-Foundation, all 30 agents, 43 skills, 25 rules, 8+2 hooks, 18 templates, 3 scripts, session management, continuous learning system, verification loop, eval harness, brainstorm/design-review workflows. Claude Code plugin format (`.claude-plugin/plugin.json` + `marketplace.json`) for distribution.
+Foundation, all 30 agents, 43 skills, 25 rules, 8+2 hooks, 18 templates, 3 scripts, 5 MCP servers (GitHub, Context7, Exa, Figma, Unity MCP), session management, continuous learning system, verification loop, eval harness, brainstorm/design-review workflows. Claude Code plugin format (`.claude-plugin/plugin.json` + `marketplace.json`) for distribution.
 
 ### Phase 2 — Near-term (XR depth)
 Add `/xr-comfort-check`, `/scene-audit`, `/shader-review` skills. Add `openxr-runtime.md` and `sdk-api.md` rules. Add `.meta` file and `.asmdef` validation hooks.

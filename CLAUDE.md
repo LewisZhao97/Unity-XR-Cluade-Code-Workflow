@@ -129,6 +129,7 @@ This file is a guidebook, not an encyclopedia. The details live in:
 - **Agents** (`.claude/agents/`) — 30 specialist agents routed automatically by domain
 - **Templates** (`.claude/docs/templates/`) — 18 document templates for design, production, and release artifacts
 - **Scripts** (`.claude/scripts/lib/`) — 3 Node.js session management utilities
+- **MCP Servers** (`.mcp.json`) — 5 pre-configured servers: GitHub, Context7, Exa, Figma, Unity MCP
 - **Docs** (`.claude/docs/`) — agent roster, coordination map, workflow references, development plan
 
 Run `/start-harness` if this is your first session. It detects your project state, ensures this file is harness-compliant, and routes you.

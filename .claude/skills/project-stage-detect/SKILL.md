@@ -73,7 +73,7 @@ auto-detect using these heuristics (check from most-advanced backward):
 
 **DO NOT** just list missing files. Instead, **ask clarifying questions**:
 
-- "I see combat code (`Assets/Scripts/Gameplay/`) but no `docs/app design docs/combat-system.md`. Was this prototyped first, or should we reverse-document?"
+- "I see combat code (`Assets/Scripts/Gameplay/`) but no `docs/app design docs/combat-system.md`. Was this prototyped first, or should we write a design doc?"
 - "You have 15 ADRs but no architecture overview. Should I create one to help new contributors?"
 - "No sprint plans in `docs/production/`. Are you tracking work elsewhere (Jira, Trello, etc.)?"
 - "I found a game concept but no systems index. Have you decomposed the concept into individual systems yet, or should we run `/map-systems`?"
@@ -169,9 +169,7 @@ Wait for user approval before creating the file.
 After generating the report, suggest relevant next steps:
 
 - **Concept exists but no systems index?** → `/map-systems` to decompose into systems
-- **Missing design docs?** → `/reverse-document design Assets/`
-- **Missing architecture docs?** → `/architecture-decision` or `/reverse-document architecture`
-- **Prototypes need documentation?** → `/reverse-document concept prototypes/[name]`
+- **Missing architecture docs?** → `/architecture-decision`
 - **No sprint plan?** → `/sprint-plan`
 - **Approaching milestone?** → `/milestone-gate`
 

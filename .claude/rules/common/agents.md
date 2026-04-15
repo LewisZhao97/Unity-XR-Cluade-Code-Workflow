@@ -9,9 +9,10 @@
 
 | Agent | Purpose | When to Use |
 |-------|---------|-------------|
-| unity-specialist | Unity Engine authority | Unity API, subsystems, project config |
+| unity-specialist | Unity Engine authority | Unity API, subsystems, Addressables, project config |
 | xr-specialist | XR development authority | XR interaction, tracking, spatial UI |
 | unity-xri-specialist | XRI implementation | XR Interaction Toolkit components |
+| unity-shader-specialist | Shaders/VFX rendering | Shader Graph, custom HLSL, VFX Graph |
 | openxr-runtime-specialist | OpenXR runtime/SDK | Runtime layer, OpenXR compliance |
 | platform-specialist | Platform builds | XR glasses (standalone) and PC streaming deployment |
 | sdk-developer | SDK architecture | Public API, versioning, documentation |
@@ -27,19 +28,15 @@
 | technical-artist | Shaders/VFX | Shader Graph, VFX, rendering optimization |
 | tools-programmer | Internal tools | Editor extensions, pipeline automation |
 | ui-programmer | UI systems | Spatial UI, world-space canvas |
-| network-programmer | Networking | Multiplayer, state sync |
-| devops-engineer | CI/CD | Build pipelines, automation |
+| game-designer | Game design | Mechanics, progression, player experience |
 
 ### Support Agents
 
 | Agent | Purpose | When to Use |
 |-------|---------|-------------|
-| qa-lead | Test strategy | Test plans, release quality gates |
-| qa-tester | Test execution | Test cases, bug reports |
+| qa-lead | Test strategy & execution | Test plans, test cases, bug reports, quality gates |
 | security-engineer | Security | Anti-cheat, data privacy |
-| accessibility-specialist | Accessibility | Comfort settings, seated mode |
-| release-manager | Releases | Platform certification, submission |
-| producer | Coordination | Sprint planning, milestone tracking |
+| producer | Coordination & release | Sprint planning, milestones, release readiness |
 
 ## Immediate Agent Usage
 

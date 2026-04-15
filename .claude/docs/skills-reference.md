@@ -1,6 +1,6 @@
 # Available Skills (Slash Commands)
 
-30 slash commands available via `/command-name`.
+24 slash commands available via `/command-name`.
 
 ## XR-Specific
 
@@ -18,7 +18,6 @@
 | `/code-review` | Architectural and quality code review |
 | `/architecture-decision` | Create an Architecture Decision Record (ADR) |
 | `/prototype` | Rapid prototyping with relaxed standards |
-| `/reverse-document` | Generate design/architecture docs from existing code |
 | `/bug-report` | Structured bug report creation |
 | `/design-review` | Review game design docs for completeness and implementability |
 | `/brainstorm` | Guided concept ideation from zero to structured design |
@@ -29,14 +28,6 @@
 |---------|---------|
 | `/sprint-plan` | Generate or update a sprint plan |
 | `/milestone-gate` | Milestone/phase readiness (artifacts, quality, go/no-go verdict) |
-| `/retrospective` | Sprint or milestone retrospective |
-| `/changelog` | Auto-generate changelog from git history |
-
-## Quality & Release
-
-| Command | Purpose |
-|---------|---------|
-| `/tech-debt` | Track, categorize, and prioritize technical debt |
 | `/asset-audit` | Asset naming, size, and format compliance |
 
 ## Verification & Evaluation
@@ -67,6 +58,5 @@
 | Command | Purpose |
 |---------|---------|
 | `/start-harness` | Discover project, ensure CLAUDE.md harness compliance, route to workflow |
-| `/onboard` | Generate onboarding doc for a new contributor or role |
 | `/project-stage-detect` | Auto-detect project stage, identify gaps, recommend next steps |
-| `/team-ui` | Orchestrate UX designer + UI programmer + art review |
+| `/team-ui` | Orchestrate UI team |

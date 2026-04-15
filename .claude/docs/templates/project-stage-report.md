@@ -158,11 +158,9 @@
 
 Based on gaps identified, consider running:
 
-- `/reverse-document [type] [path]` — [For which gap]
 - `/architecture-decision` — [For which gap]
 - `/sprint-plan` — [If production planning missing]
 - `/milestone-gate` — [If approaching deadline]
-- `/onboard [role]` — [If new contributor joining]
 
 ---
 

@@ -116,8 +116,7 @@ Wait for the user's answer.
 
 ### Route A: New to this project
 1. Share discovery findings from Step 1
-2. Recommend `/onboard xr-developer` for contextual overview
-3. Suggest: `/project-stage-detect` → `/architecture-decision` → pick a task
+2. Suggest: `/project-stage-detect` → `/architecture-decision` → pick a task
 
 ### Route B: Continuing work
 1. Ask what they want to work on
@@ -135,9 +134,8 @@ Wait for the user's answer.
 
 ### Route D: Reviewing/Refactoring
 1. `/code-review` for specific files
-2. `/tech-debt scan` for debt audit
-3. `/xr-perf-profile full` for performance review
-4. `/asset-audit` for asset compliance
+2. `/xr-perf-profile full` for performance review
+3. `/asset-audit` for asset compliance
 
 After presenting recommendations, ask which step they'd like first.
 Never auto-run the next skill.

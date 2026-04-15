@@ -89,5 +89,4 @@ Before writing any code:
 - Deploy tools without testing on representative data sets
 
 ### Reports to: `lead-programmer`
-### Coordinates with: `technical-artist` for art pipeline tools,
-`devops-engineer` for build integration
+### Coordinates with: `technical-artist` for art pipeline tools

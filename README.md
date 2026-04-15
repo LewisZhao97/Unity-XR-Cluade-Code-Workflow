@@ -3,14 +3,14 @@
   <p align="center">
     A pre-built <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a> harness for Unity XR development.
     <br />
-    30 specialist agents, 30 slash commands, 25 auto-loaded rules, and 8 lifecycle hooks — all tuned for XR.
+    18 specialist agents, 24 slash commands, 25 auto-loaded rules, and 8 lifecycle hooks — all tuned for XR.
   </p>
 </p>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
-  <a href=".claude/agents"><img src="https://img.shields.io/badge/agents-30-blueviolet" alt="30 Agents"></a>
-  <a href=".claude/skills"><img src="https://img.shields.io/badge/skills-30-green" alt="30 Skills"></a>
+  <a href=".claude/agents"><img src="https://img.shields.io/badge/agents-18-blueviolet" alt="18 Agents"></a>
+  <a href=".claude/skills"><img src="https://img.shields.io/badge/skills-24-green" alt="24 Skills"></a>
   <a href=".claude/hooks"><img src="https://img.shields.io/badge/hooks-8+2-darkcyan" alt="8+2 Hooks"></a>
   <a href=".claude/rules"><img src="https://img.shields.io/badge/rules-25-red" alt="25 Rules"></a>
   <a href=".mcp.json"><img src="https://img.shields.io/badge/mcps-5-steelblue" alt="5 MCPs"></a>
@@ -82,8 +82,8 @@ The engineer's role shifts from writing code to **designing the control system**
 - [Quick Start](#quick-start)
 - [Project Structure](#project-structure)
 - [How It Works](#how-it-works)
-- [Working Agents (30)](#working-agents-30)
-- [Slash Commands (30)](#slash-commands-31)
+- [Working Agents (18)](#working-agents-18)
+- [Slash Commands (24)](#slash-commands-24)
 - [Rules (25)](#rules-25)
 - [Hooks (8 + 2 optional)](#hooks-8--2-optional)
 - [MCP Servers (5)](#mcp-servers-5)
@@ -95,20 +95,20 @@ The engineer's role shifts from writing code to **designing the control system**
 
 | Component | Count | Purpose |
 |-----------|-------|---------|
-| **Agents** | 30 | Specialist sub-agents with domain expertise |
-| **Skills** | 30 | One-command workflows (`/plan`, `/code-review`, `/xr-test`, ...) |
+| **Agents** | 18 | Specialist sub-agents with domain expertise |
+| **Skills** | 24 | One-command workflows (`/plan`, `/code-review`, `/xr-test`, ...) |
 | **Rules** | 25 | Auto-loaded coding standards and constraints |
 | **Hooks** | 8 + 2 | 8 lifecycle hooks + 2 optional learning/optimization hooks |
 | **Scripts** | 3 | Node.js session management utilities |
-| **Templates** | 18 | Document templates for design, production, and release artifacts |
+| **Templates** | 15 | Document templates for design, production, and release artifacts |
 | **CLAUDE.md** | 1 | Project-wide instructions loaded every conversation |
 | **MCP Servers** | 5 | GitHub, Context7 (docs), Exa (search), Figma, Unity MCP |
 | **settings.json** | 1 | Permissions, hook wiring, safety deny-list |
 
 ## Documentations
 
-- [Agent Roster](.claude/docs/agent-roster.md) — 30 agents, tier hierarchy, delegation map
-- [Skills Reference](.claude/docs/skills-reference.md) — 30 slash commands by category
+- [Agent Roster](.claude/docs/agent-roster.md) — 18 agents, tier hierarchy, delegation map
+- [Skills Reference](.claude/docs/skills-reference.md) — 24 slash commands by category
 - [Rules Reference](.claude/docs/rules-reference.md) — 25 auto-loaded rules by path
 - [Hooks Reference](.claude/docs/hooks-reference.md) — 8 core + 2 optional learning hooks
 - [Quick Start](.claude/docs/quick-start.md) — Onboarding paths for new users
@@ -224,8 +224,8 @@ XRStack/
 │   └── marketplace.json        # Self-hosted marketplace definition
 ├── .claude/
 │   ├── settings.json           # Permissions, hooks, safety rules
-│   ├── agents/                 # 30 specialist agent definitions
-│   ├── skills/                 # 30 slash command implementations
+│   ├── agents/                 # 18 specialist agent definitions
+│   ├── skills/                 # 24 slash command implementations
 │   ├── rules/
 │   │   ├── common/             # 19 rules (loaded for all files)
 │   │   └── csharp/             # 6 rules (loaded for *.cs files only)
@@ -233,7 +233,7 @@ XRStack/
 │   ├── scripts/
 │   │   └── lib/                # Node.js session management utilities
 │   └── docs/
-│       ├── templates/          # 18 document templates
+│       ├── templates/          # 15 document templates
 │       └── unity-references/   # Unity API reference docs
 ├── .mcp.json                   # MCP server configuration (5 servers)
 ├── CLAUDE.md                   # Template — copy to your project root and customize
@@ -299,70 +299,50 @@ You type a message
 
 **Hooks** are shell scripts triggered by lifecycle events. `validate-commit.sh` runs before every `git commit` to check for hardcoded values and JSON validity. `session-start.sh` loads branch context when you start a session.
 
-## Working Agents (30)
+## Working Agents (18)
 
 The workflow is organized in three tiers, from strategic to tactical:
 
 ### Tier 1 — Directors (Strategic Decisions)
 
-High-level decision makers. Use Opus model for deepest reasoning.
-
 | Agent | Responsibility |
 |-------|---------------|
 | `technical-director` | Architecture, technology choices, performance strategy, technical risk |
-| `producer` | Sprint planning, milestone tracking, scope negotiation, cross-team coordination |
+| `producer` | Sprint planning, milestones, scope, release coordination |
 
 ### Tier 2 — Leads (Tactical Decisions)
 
-Domain leads who translate strategy into concrete plans. Use Sonnet model.
-
 | Agent | Responsibility |
 |-------|---------------|
-| `lead-programmer` | Code architecture, code review, coding standards, work assignment |
-| `qa-lead` | Test strategy, quality gates, release readiness |
-| `xr-specialist` | XR interaction authority, tracking, spatial UI, cross-platform XR |
-| `release-manager` | Release pipeline, certification, store submission, versioning |
+| `lead-programmer` | Code architecture, code review, coding standards |
+| `qa-lead` | Test strategy, test execution, quality gates, release readiness |
+| `xr-specialist` | XR interaction authority, tracking, spatial UI |
 
 ### Tier 3 — Specialists (Implementation)
-
-Domain experts who execute specific work. Use Sonnet or Haiku model.
 
 | Category | Agents |
 |----------|--------|
 | **XR** | `unity-xri-specialist`, `openxr-runtime-specialist`, `platform-specialist`, `sdk-developer` |
-| **Unity Engine** | `unity-specialist`, `unity-shader-specialist`, `unity-ui-specialist`, `unity-dots-specialist`, `unity-addressables-specialist` |
-| **Programming** | `gameplay-programmer`, `network-programmer`, `tools-programmer`, `ui-programmer` |
+| **Unity Engine** | `unity-specialist`, `unity-shader-specialist` |
+| **Programming** | `gameplay-programmer`, `tools-programmer`, `ui-programmer` |
 | **Art & Tech Art** | `technical-artist` |
-| **Quality** | `qa-tester`, `security-engineer`, `accessibility-specialist`, `performance-analyst` |
+| **Quality** | `security-engineer`, `performance-analyst` |
 | **Design** | `game-designer` |
-| **Production** | `analytics-engineer`, `localization-lead`, `ux-designer`, `devops-engineer`, `prototyper` |
 
-### Engine Specialists
-
-The Unity engine specialists form a sub-hierarchy for deep engine knowledge:
+### Engine & XR Hierarchies
 
 ```
 unity-specialist (lead)
-├── unity-dots-specialist         # ECS, Jobs, Burst compiler
-├── unity-shader-specialist       # Shader Graph, VFX Graph, URP customization
-├── unity-addressables-specialist # Asset loading, bundles, memory management
-├── unity-ui-specialist           # UI Toolkit, UGUI, data binding
-└── unity-xri-specialist          # XR Interaction Toolkit components
-```
+└── unity-shader-specialist       # Shader Graph, VFX Graph, URP
 
-The `unity-specialist` is the generalist authority on Unity APIs and patterns. Sub-specialists handle deep subsystem work. When Claude encounters a Shader Graph question, it routes to `unity-shader-specialist`; for an Addressables loading issue, to `unity-addressables-specialist`.
-
-XR-specific engine work has its own parallel hierarchy:
-
-```
 xr-specialist (authority)
-├── unity-xri-specialist          # XRI interactors, interactables, locomotion
-├── openxr-runtime-specialist     # OpenXR loader, runtime, API layers
+├── unity-xri-specialist          # XRI interactors, locomotion
+├── openxr-runtime-specialist     # OpenXR loader, runtime
 ├── platform-specialist           # XR glasses / PC streaming builds
-└── sdk-developer                 # SDK public API, versioning, UPM
+└── sdk-developer                 # SDK public API, UPM
 ```
 
-## Slash Commands (30)
+## Slash Commands (24)
 
 ### XR-Specific
 | Command | Purpose |
@@ -378,7 +358,6 @@ xr-specialist (authority)
 | `/code-review` | Architectural and quality code review |
 | `/architecture-decision` | Create an Architecture Decision Record |
 | `/prototype` | Rapid prototyping with relaxed standards |
-| `/reverse-document` | Generate design docs from existing code |
 | `/bug-report` | Structured bug report creation |
 | `/design-review` | Review game design docs for completeness and implementability |
 | `/brainstorm` | Guided concept ideation from zero to structured design |
@@ -388,13 +367,6 @@ xr-specialist (authority)
 |---------|---------|
 | `/sprint-plan` | Plan or update a sprint |
 | `/milestone-gate` | Milestone/phase readiness (artifacts, quality, go/no-go verdict) |
-| `/retrospective` | Sprint or milestone retrospective |
-| `/changelog` | Generate changelog from git history |
-
-### Quality & Release
-| Command | Purpose |
-|---------|---------|
-| `/tech-debt` | Track and prioritize technical debt |
 | `/asset-audit` | Asset naming, size, and format compliance |
 
 ### Verification & Evaluation
@@ -421,8 +393,7 @@ xr-specialist (authority)
 | Command | Purpose |
 |---------|---------|
 | `/start-harness` | Discover project, ensure CLAUDE.md harness compliance, route to workflow |
-| `/onboard` | Generate onboarding doc for a new contributor |
-| `/team-ui` | Orchestrate UX designer + UI programmer + art review |
+| `/team-ui` | Orchestrate UI team |
 | `/project-stage-detect` | Auto-detect project stage and recommend next steps |
 
 ## Rules (25)

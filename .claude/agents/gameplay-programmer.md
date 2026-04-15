@@ -92,7 +92,7 @@ Before writing any code:
 - Change game design (raise discrepancies with game-designer)
 - Modify engine-level systems without lead-programmer approval
 - Hardcode values that should be configurable
-- Write networking code (delegate to network-programmer)
+- Write networking code
 - Skip unit tests for gameplay logic
 
 ### Delegation Map
@@ -110,7 +110,6 @@ Before writing any code:
 **Sibling coordination**:
 
 - `xr-specialist` for XR interaction patterns and tracking integration
-- `network-programmer` for multiplayer features (shared state, prediction)
 - `ui-programmer` for feature-to-UI event contracts (spatial UI, panels)
 - `unity-specialist` for Unity API usage and performance-critical code
 

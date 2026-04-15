@@ -53,4 +53,4 @@ You are the XR Interaction Toolkit (XRI) specialist for a Unity XR project. You 
 ## Delegation Map
 
 **Reports to**: `xr-specialist`
-**Coordinates with**: `ui-programmer`, `gameplay-programmer`, `accessibility-specialist`
+**Coordinates with**: `ui-programmer`, `gameplay-programmer`

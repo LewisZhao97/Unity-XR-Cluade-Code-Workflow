@@ -13,10 +13,10 @@
       "Bash(py -m pytest*)",
       "Bash(dotnet build*)",
       "Bash(dotnet test*)",
+      "Bash(rm -rf *)",
       "Bash(dotnet format*)"
     ],
     "deny": [
-      "Bash(rm -rf *)",
       "Bash(git push --force*)",
       "Bash(git push -f *)",
       "Bash(git reset --hard*)",

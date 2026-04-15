@@ -8,11 +8,7 @@ command: true
 
 ## Implementation
 
-Run the instinct CLI:
-
-```bash
-python3 .claude/skills/continuous-learning-v2/scripts/instinct-cli.py evolve [--generate]
-```
+Read instincts from `~/.claude/homunculus/` (project + global scopes) and cluster them manually. The previous auto-CLI was removed when continuous-learning-v2 was cut.
 
 Analyzes instincts and clusters related ones into higher-level structures:
 - **Commands**: When instincts describe user-invoked actions

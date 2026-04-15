@@ -2,9 +2,9 @@
 
 ## What Is This?
 
-A pre-built Claude Code workflow for Unity XR development. It provides 29 specialist
-agents, 27 slash commands, 25 auto-loaded rules, and 8 lifecycle hooks — all tuned
-for developing XR applications targeting XR glasses and PC streaming.
+A pre-built Claude Code workflow for Unity XR development. 18 specialist agents,
+24 slash commands, 25 auto-loaded rules, and 8 lifecycle hooks — all tuned for
+XR applications targeting XR glasses and PC streaming.
 
 ## How to Use
 
@@ -12,15 +12,14 @@ for developing XR applications targeting XR glasses and PC streaming.
 
 Three tiers of agents, from strategic to tactical:
 
-- **Tier 1 (Opus)**: Directors — high-level decisions
+- **Tier 1 (Opus)**: Directors
   - `technical-director` — architecture and technology decisions
-  - `producer` — scheduling, coordination, risk management
+  - `producer` — scheduling, coordination, release
 
-- **Tier 2 (Sonnet)**: Leads — domain ownership
-  - `lead-programmer`, `xr-specialist`, `qa-lead`, `release-manager`
+- **Tier 2 (Sonnet)**: Leads
+  - `lead-programmer`, `xr-specialist`, `qa-lead`
 
-- **Tier 3 (Sonnet/Haiku)**: Specialists — implementation
-  - XR, Unity engine, programming, quality, and production specialists
+- **Tier 3 (Sonnet/Haiku)**: Specialists — XR, Unity engine, programming, quality
 
 ### 2. Pick the Right Agent
 
@@ -32,23 +31,18 @@ Three tiers of agents, from strategic to tactical:
 | Write a shader for XR | `unity-shader-specialist` |
 | Fix a performance problem | `performance-analyst` |
 | Design SDK public API | `sdk-developer` |
-| Write test cases | `qa-tester` |
+| Write test cases | `qa-lead` |
 | Make an architecture decision | `technical-director` |
-| Plan a sprint | `producer` |
-| Set up CI/CD | `devops-engineer` |
+| Plan a sprint / manage release | `producer` |
 | Work with XRI components | `unity-xri-specialist` |
-| Manage Addressable assets | `unity-addressables-specialist` |
-| Test a concept quickly | `prototyper` |
 | Review security | `security-engineer` |
-| Check XR accessibility | `accessibility-specialist` |
-| Manage a release | `release-manager` |
-| Prepare strings for translation | `localization-lead` |
+| Design game mechanics | `game-designer` |
 
 ### 3. Use Slash Commands
 
 | Command | What it does |
 |---------|-------------|
-| `/start-harness` | Discover project, ensure CLAUDE.md harness compliance, route to workflow |
+| `/start-harness` | Discover project, ensure CLAUDE.md compliance, route workflow |
 | `/plan` | Create implementation plan (waits for confirmation) |
 | `/code-review` | Review code for quality and architecture |
 | `/xr-test` | Generate XR interaction and comfort tests |
@@ -58,9 +52,9 @@ Three tiers of agents, from strategic to tactical:
 | `/architecture-decision` | Create an ADR |
 | `/prototype` | Scaffold a throwaway prototype |
 | `/bug-report` | Create structured bug report |
-| `/tech-debt` | Scan and prioritize technical debt |
+| `/milestone-gate` | Phase readiness check |
 
-See `skills-reference.md` for the full list of 30 commands.
+See `skills-reference.md` for the full list of 24 commands.
 
 ### 4. Follow the Coordination Rules
 
@@ -86,7 +80,7 @@ ensures CLAUDE.md is harness-compliant, and routes you to the right workflow.
 
 ### Path B: Existing Project, First Time Using This Workflow
 
-1. Run `/start-harness` or `/project-stage-detect` — analyzes what exists, identifies gaps
+1. Run `/start-harness` or `/project-stage-detect` — analyzes what exists
 2. Run `/milestone-gate` to validate phase readiness
 3. Run `/sprint-plan new` to plan next work
 
@@ -103,25 +97,11 @@ ensures CLAUDE.md is harness-compliant, and routes you to the right workflow.
 CLAUDE.md                           — Project instructions (~100 lines)
 .claude/
   settings.json                     — Permissions, hooks, safety rules
-  agents/                           — 29 agent definitions
-  skills/                           — 27 slash command definitions
+  agents/                           — 18 agent definitions
+  skills/                           — 24 slash command definitions
   rules/
     common/                         — 19 rules (always active)
     csharp/                         — 6 rules (active for *.cs files)
   hooks/                            — 8 lifecycle scripts
-  docs/
-    quick-start.md                  — This file
-    agent-roster.md                 — Full agent list with tiers
-    agent-coordination-map.md       — Delegation and workflow patterns
-    skills-reference.md             — All slash commands
-    rules-reference.md              — Path-specific rules
-    hooks-reference.md              — Active hooks
-    technical-preferences.md        — Engine, naming, performance budgets
-    coordination-rules.md           — Agent coordination principles
-    context-management.md           — Context window strategy
-    review-workflow.md              — Review and sign-off process
-    setup-requirements.md           — System prerequisites
-    settings-local-template.md      — Personal settings guide
-    CLAUDE-local-template.md        — Personal CLAUDE.md guide
-    agent-development-plan.md       — Workflow development roadmap
+  docs/                             — references and guides
 ```

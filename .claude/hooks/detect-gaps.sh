@@ -49,7 +49,7 @@ DOC_FILES=$(echo "$DOC_FILES" | tr -d ' ')
 
 if [ "$SRC_FILES" -gt 50 ] && [ "$DOC_FILES" -lt 5 ]; then
   echo "GAP: Substantial codebase ($SRC_FILES C# files) but sparse docs ($DOC_FILES files)"
-  echo "    Suggested action: /reverse-document architecture Assets/Scripts/[system]"
+  echo "    Suggested action: /architecture-decision to capture key architectural choices"
 fi
 
 # --- Check 2: Prototypes without documentation ---
@@ -62,7 +62,6 @@ for proto_dir in Assets/Prototypes Prototypes; do
         if [ ! -f "${pdir}/README.md" ]; then
           proto_name=$(basename "$pdir")
           echo "GAP: Prototype '$proto_name' has no README.md"
-          echo "    Suggested: /reverse-document concept $pdir"
         fi
       done <<< "$PROTOTYPE_DIRS"
     fi

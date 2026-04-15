@@ -74,6 +74,5 @@ Developers refine these docs as the app evolves.
 ## Delegation Map
 
 **Reports to**: `technical-director`
-**Coordinates with**: `xr-specialist` (XR interaction patterns), `ux-designer`
-(player-facing clarity), `gameplay-programmer` (implementation),
-`accessibility-specialist` (comfort)
+**Coordinates with**: `xr-specialist` (XR interaction patterns),
+`gameplay-programmer` (implementation)

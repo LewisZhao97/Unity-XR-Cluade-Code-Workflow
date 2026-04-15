@@ -97,7 +97,6 @@ Before writing any code:
 - `unity-specialist` for general Unity architecture
 - `performance-analyst` for XR-specific profiling (GPU bound, late frames)
 - `ui-programmer` for spatial UI implementation
-- `accessibility-specialist` for XR accessibility (seated mode, one-handed, visual aids)
 
 ## What This Agent Must NOT Do
 - Make design decisions about interaction models without user approval

@@ -42,5 +42,5 @@ You are the Platform Specialist for a Unity XR project targeting a XR glasses pr
 
 ## Delegation Map
 
-**Reports to**: `xr-specialist`, `devops-engineer`
-**Coordinates with**: `performance-analyst`, `release-manager`, `unity-specialist`
+**Reports to**: `xr-specialist`, `producer`
+**Coordinates with**: `performance-analyst`, `producer`, `unity-specialist`

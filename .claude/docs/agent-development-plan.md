@@ -1,5 +1,7 @@
 # XRStack — Development Plan
 
+> **⚠️ OUT OF DATE**: Agent counts below reflect the original 30-agent / 43-skill inventory. Current state is **18 agents, 24 skills**. Removed agents: `qa-tester`, `release-manager`, `ux-designer`, `devops-engineer`, `accessibility-specialist`, `localization-lead`, `analytics-engineer`, `network-programmer`, `prototyper`, `unity-dots-specialist`, `unity-ui-specialist`, `unity-addressables-specialist`. See [agent-roster.md](agent-roster.md) and [skills-reference.md](skills-reference.md) for current truth.
+
 ## Status Legend
 
 - [x] Done

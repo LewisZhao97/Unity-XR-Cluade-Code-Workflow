@@ -1,8 +1,8 @@
 # XRStack Harness Test Plan
 
-> **⚠️ OUT OF DATE**: This plan was written against the 43-skill inventory. The skill set has since been trimmed to 31 (see [skills-reference.md](skills-reference.md)). Test cases for removed skills — `/perf-profile`, `/estimate`, `/scope-check`, `/milestone-review`, `/gate-check`, `/hotfix`, `/localize`, `/prune`, `/instinct-import`, `/instinct-export`, `/skill-create`, `/strategic-compact`, `/team-release`, `/release-checklist` — should be skipped or replaced with `/milestone-gate` where applicable.
+> **⚠️ OUT OF DATE**: This plan was written against the original 43-skill / 30-agent inventory. Both have since been trimmed — current state is **24 skills, 18 agents** (see [skills-reference.md](skills-reference.md) and [agent-roster.md](agent-roster.md)). Skip or adapt any case that references removed skills (`/retrospective`, `/changelog`, `/tech-debt`, `/reverse-document`, `/onboard`, `/continuous-learning-v2`, `/perf-profile`, `/estimate`, `/scope-check`, `/milestone-review`, `/gate-check`, `/hotfix`, `/localize`, `/prune`, `/strategic-compact`, `/team-release`, `/release-checklist`) or removed agents (`qa-tester`, `release-manager`, `ux-designer`, `devops-engineer`, `accessibility-specialist`, `localization-lead`, `analytics-engineer`, `network-programmer`, `prototyper`, `unity-dots-specialist`, `unity-ui-specialist`, `unity-addressables-specialist`). Use `/milestone-gate` and `qa-lead` as replacements where applicable.
 >
-> **Purpose**: Systematically test all harness components (30 skills, 30 agents, 25 rules, 8 hooks, 18 templates) using a single empty Unity project and one continuous scenario.
+> **Purpose**: Systematically test all harness components using a single empty Unity project and one continuous scenario.
 >
 > **Scenario**: Build a simple "XR Object Grabber" — a minimal XR app where the user grabs and throws cubes. Small enough to complete, complex enough to exercise the full harness.
 >

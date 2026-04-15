@@ -10,9 +10,7 @@ Shows learned instincts for the current project plus global instincts, grouped b
 
 ## Implementation
 
-```bash
-python3 .claude/skills/continuous-learning-v2/scripts/instinct-cli.py status
-```
+Read instincts directly from `~/.claude/homunculus/projects/<project-id>/instincts/` and `~/.claude/homunculus/instincts/`, then display grouped by domain with confidence scores. The previous auto-CLI was removed when continuous-learning-v2 was cut.
 
 ## Usage
 

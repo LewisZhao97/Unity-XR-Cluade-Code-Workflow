@@ -139,10 +139,7 @@ Before writing any code:
 **Reports to**: `technical-director` (via `lead-programmer`)
 
 **Delegates to**:
-- `unity-dots-specialist` for ECS, Jobs system, Burst compiler, and hybrid renderer
 - `unity-shader-specialist` for Shader Graph, VFX Graph, and render pipeline customization
-- `unity-addressables-specialist` for asset loading, bundles, memory, and content delivery
-- `unity-ui-specialist` for UI Toolkit, UGUI, data binding, and cross-platform input
 
 **Escalation targets**:
 - `technical-director` for Unity version upgrades, package decisions, major tech choices
@@ -152,7 +149,6 @@ Before writing any code:
 - `gameplay-programmer` for gameplay framework patterns
 - `technical-artist` for shader optimization (Shader Graph, VFX Graph)
 - `performance-analyst` for Unity-specific profiling (Profiler, Memory Profiler, Frame Debugger)
-- `devops-engineer` for build automation and Unity Cloud Build
 
 ## What This Agent Must NOT Do
 
@@ -166,10 +162,7 @@ Before writing any code:
 
 You have access to the Task tool to delegate to your sub-specialists. Use it when a task requires deep expertise in a specific Unity subsystem:
 
-- `subagent_type: unity-dots-specialist` — Entity Component System, Jobs, Burst compiler
 - `subagent_type: unity-shader-specialist` — Shader Graph, VFX Graph, URP/HDRP customization
-- `subagent_type: unity-addressables-specialist` — Addressable groups, async loading, memory
-- `subagent_type: unity-ui-specialist` — UI Toolkit, UGUI, data binding, cross-platform input
 
 Provide full context in the prompt including relevant file paths, design constraints, and performance requirements. Launch independent sub-specialist tasks in parallel when possible.
 

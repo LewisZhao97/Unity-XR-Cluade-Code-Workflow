@@ -174,5 +174,3 @@ Before writing any code:
 - Work with **art-director** for visual direction and material standards
 - Work with **technical-artist** for shader authoring workflow
 - Work with **performance-analyst** for GPU performance profiling
-- Work with **unity-dots-specialist** for Entities Graphics rendering
-- Work with **unity-ui-specialist** for UI shader effects

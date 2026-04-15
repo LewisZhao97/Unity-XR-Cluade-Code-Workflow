@@ -99,9 +99,6 @@ Before writing any code:
 
 ### Delegation Map
 
-Delegates to:
-- `qa-tester` for test case writing and test execution
-
 Reports to: `producer` for scheduling, `technical-director` for quality standards
 Coordinates with: `lead-programmer` for testability, all department leads for
 feature-specific test planning

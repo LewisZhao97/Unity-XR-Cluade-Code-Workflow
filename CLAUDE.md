@@ -119,16 +119,16 @@ Beyond plan-implement-review, the harness provides advanced workflows:
 - **Continuous Learning** — `/learn-eval` extracts reusable patterns; `/instinct-status` shows confidence-scored instincts; `/evolve` promotes instincts into skills
 - **Session Management** — `/save-session` persists state; `/sessions` lists/loads/aliases saved sessions
 - **Game Design** — `/brainstorm` guides concept ideation from zero to structured design; `/design-review` validates design docs before implementation
-- **Templates** — 15 document templates in `.claude/docs/templates/` for ADRs, GDDs, sprint plans, and more
+- **Templates** — 14 document templates in `.claude/docs/templates/` for ADRs, GDDs, sprint plans, and more
 
 ## Where to Find More
 
 This file is a guidebook, not an encyclopedia. The details live in:
 
-- **Rules** (`.claude/rules/common/`, `.claude/rules/csharp/`) — 25 auto-loaded coding standards, XR constraints, testing, security
+- **Rules** (`.claude/rules/common/`, `.claude/rules/csharp/`) — auto-loaded coding standards, XR constraints, testing
 - **Skills** (`.claude/skills/`) — 24 slash commands for planning, review, profiling, learning, sessions
-- **Agents** (`.claude/agents/`) — 18 specialist agents routed automatically by domain
-- **Templates** (`.claude/docs/templates/`) — 15 document templates for design, production, and release artifacts
+- **Agents** (`.claude/agents/`) — 16 specialist agents routed automatically by domain
+- **Templates** (`.claude/docs/templates/`) — 14 document templates for design, production, and release artifacts
 - **Scripts** (`.claude/scripts/lib/`) — 3 Node.js session management utilities
 - **MCP Servers** (`.mcp.json`) — 5 pre-configured servers: GitHub, Context7, Exa, Figma, Unity MCP
 - **Docs** (`.claude/docs/`) — agent roster, coordination map, workflow references, development plan

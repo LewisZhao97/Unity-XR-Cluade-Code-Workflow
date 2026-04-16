@@ -82,7 +82,7 @@ Before writing any code:
 - Use `[Header("Section")]` and `[Tooltip("Description")]` for inspector organization
 - Avoid `Update()` where possible — use events, coroutines, or the Job System
 - Use `readonly` and `const` where applicable
-- Follow C# naming: `PascalCase` for public members, `_camelCase` for private fields, `camelCase` for locals
+- Follow Unity naming: `PascalCase` for public members, `m_PascalCase` for private instance fields, `s_PascalCase` for private static fields, `k_PascalCase` for constants, `camelCase` for locals — see coding-style.md
 
 ### Memory and GC Management
 - Avoid allocations in hot paths (`Update`, physics callbacks)
@@ -139,7 +139,7 @@ Before writing any code:
 **Reports to**: `technical-director` (via `lead-programmer`)
 
 **Delegates to**:
-- `unity-shader-specialist` for Shader Graph, VFX Graph, and render pipeline customization
+- `unity-technical-artist` for Shader Graph, ShaderLab/HLSL, compute shaders, VFX Graph, render features, post-processing
 
 **Escalation targets**:
 - `technical-director` for Unity version upgrades, package decisions, major tech choices
@@ -147,7 +147,7 @@ Before writing any code:
 
 **Coordinates with**:
 - `gameplay-programmer` for gameplay framework patterns
-- `technical-artist` for shader optimization (Shader Graph, VFX Graph)
+- `unity-technical-artist` for shaders, VFX, render features, and visual optimization
 - `performance-analyst` for Unity-specific profiling (Profiler, Memory Profiler, Frame Debugger)
 
 ## What This Agent Must NOT Do
@@ -162,7 +162,7 @@ Before writing any code:
 
 You have access to the Task tool to delegate to your sub-specialists. Use it when a task requires deep expertise in a specific Unity subsystem:
 
-- `subagent_type: unity-shader-specialist` — Shader Graph, VFX Graph, URP/HDRP customization
+- `subagent_type: unity-technical-artist` — Shader Graph, ShaderLab/HLSL, compute shaders, VFX Graph, render features, post-processing, art pipeline
 
 Provide full context in the prompt including relevant file paths, design constraints, and performance requirements. Launch independent sub-specialist tasks in parallel when possible.
 

@@ -76,7 +76,7 @@ auto-detect using these heuristics (check from most-advanced backward):
 - "I see combat code (`Assets/Scripts/Gameplay/`) but no `docs/app design docs/combat-system.md`. Was this prototyped first, or should we write a design doc?"
 - "You have 15 ADRs but no architecture overview. Should I create one to help new contributors?"
 - "No sprint plans in `docs/production/`. Are you tracking work elsewhere (Jira, Trello, etc.)?"
-- "I found a game concept but no systems index. Have you decomposed the concept into individual systems yet, or should we run `/map-systems`?"
+- "I found a game concept but no systems index. Have you decomposed the concept into individual systems yet? Consider `/architecture-decision` to record the system breakdown."
 - "Prototypes directory has 3 projects with no READMEs. Were these experiments, or do they need documentation?"
 
 ### 4. Generate Stage Report
@@ -168,7 +168,7 @@ Wait for user approval before creating the file.
 
 After generating the report, suggest relevant next steps:
 
-- **Concept exists but no systems index?** → `/map-systems` to decompose into systems
+- **Concept exists but no systems index?** → `/architecture-decision` to document the system breakdown, or `/brainstorm` Phase 7 to derive architecture from the concept
 - **Missing architecture docs?** → `/architecture-decision`
 - **No sprint plan?** → `/sprint-plan`
 - **Approaching milestone?** → `/milestone-gate`

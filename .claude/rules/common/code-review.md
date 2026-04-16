@@ -38,15 +38,13 @@ Before marking code complete:
 
 ## Security Review Triggers
 
-**STOP and use security-reviewer agent when:**
+**Flag for careful review when:**
 
 - Authentication or authorization code
 - User input handling
-- Database queries
 - File system operations
 - External API calls
 - Cryptographic operations
-- Payment or financial code
 
 ## Review Severity Levels
 
@@ -63,12 +61,9 @@ Use these agents for code review:
 
 | Agent | Purpose |
 |-------|---------|
-| **code-reviewer** | General code quality, patterns, best practices |
-| **security-reviewer** | Security vulnerabilities, OWASP Top 10 |
-| **typescript-reviewer** | TypeScript/JavaScript specific issues |
-| **python-reviewer** | Python specific issues |
-| **go-reviewer** | Go specific issues |
-| **rust-reviewer** | Rust specific issues |
+| **lead-programmer** | Architecture, code quality, Unity coding standards |
+| **unity-specialist** | Unity-specific API usage, subsystem patterns |
+| **qa-lead** | Test coverage, testability concerns |
 
 ## Review Workflow
 
@@ -119,6 +114,5 @@ Use these agents for code review:
 This rule works with:
 
 - [testing.md](testing.md) - Test coverage requirements
-- [security.md](security.md) - Security checklist
 - [git-workflow.md](git-workflow.md) - Commit standards
 - [agents.md](agents.md) - Agent delegation

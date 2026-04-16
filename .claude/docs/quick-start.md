@@ -2,7 +2,7 @@
 
 ## What Is This?
 
-A pre-built Claude Code workflow for Unity XR development. 18 specialist agents,
+A pre-built Claude Code workflow for Unity XR development. 16 specialist agents,
 24 slash commands, 25 auto-loaded rules, and 8 lifecycle hooks — all tuned for
 XR applications targeting XR glasses and PC streaming.
 
@@ -28,14 +28,14 @@ Three tiers of agents, from strategic to tactical:
 | Design XR interaction architecture | `xr-specialist` |
 | Implement an XR feature | `gameplay-programmer` |
 | Review code quality | `lead-programmer` |
-| Write a shader for XR | `unity-shader-specialist` |
+| Write a shader for XR | `unity-technical-artist` |
 | Fix a performance problem | `performance-analyst` |
 | Design SDK public API | `sdk-developer` |
 | Write test cases | `qa-lead` |
 | Make an architecture decision | `technical-director` |
 | Plan a sprint / manage release | `producer` |
 | Work with XRI components | `unity-xri-specialist` |
-| Review security | `security-engineer` |
+| Review rendering/VFX | `unity-technical-artist` |
 | Design game mechanics | `game-designer` |
 
 ### 3. Use Slash Commands
@@ -97,7 +97,7 @@ ensures CLAUDE.md is harness-compliant, and routes you to the right workflow.
 CLAUDE.md                           — Project instructions (~100 lines)
 .claude/
   settings.json                     — Permissions, hooks, safety rules
-  agents/                           — 18 agent definitions
+  agents/                           — 16 agent definitions
   skills/                           — 24 slash command definitions
   rules/
     common/                         — 19 rules (always active)

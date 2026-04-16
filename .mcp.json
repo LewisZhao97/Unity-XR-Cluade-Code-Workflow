@@ -1,34 +1,42 @@
 {
     "mcpServers": {
         "github": {
-            "command": "cmd",
+            "command": "npx",
             "args": [
-                "/c",
-                "npx",
                 "-y",
-                "@modelcontextprotocol/server-github@2025.4.8"
-            ]
+                "@modelcontextprotocol/server-github"
+            ],
+            "env": {
+                "GITHUB_PERSONAL_ACCESS_TOKEN": "GITHUB_PERSONAL_ACCESS_TOKEN"
+            },
+            "description": "GitHub operations - PRs, issues, repos"
         },
         "context7": {
-            "command": "cmd",
-            "args": [
-                "/c",
-                "npx",
-                "-y",
-                "@upstash/context7-mcp@2.1.4"
-            ]
+            "type": "http",
+            "url": "https://mcp.context7.com/mcp",
+            "description": "Live documentation lookup — use with /docs command and documentation-lookup skill (resolve-library-id, query-docs)."
         },
         "exa": {
             "type": "http",
-            "url": "https://mcp.exa.ai/mcp"
+            "url": "https://mcp.exa.ai/mcp",
+            "description": "Web search, research, and data ingestion via Exa API — prefer task-scoped use for broader research after GitHub search and primary docs"
         },
         "figma": {
             "type": "http",
-            "url": "https://mcp.figma.com/mcp"
+            "url": "https://mcp.figma.com/mcp",
+            "description": "Figma design access — read designs, get screenshots, inspect components, manage Code Connect mappings. Use when the user shares a figma.com URL or asks about a Figma design."
         },
         "unityMCP": {
             "type": "http",
-            "url": "http://localhost:8080/mcp"
+            "url": "http://localhost:8080/mcp",
+            "description": "Unity Editor bridge (localhost or remote) — query scene hierarchy, inspect GameObjects, read component values, run editor scripts. Requires Unity project open with the MCP server running."
         }
+    },
+    "_comments": {
+        "usage": "If you are using this mcp as claude code plugin, copy the servers you need to your ~/.claude.json mcpServers section",
+        "env_vars": "Replace GITHUB_PERSONAL_ACCESS_TOKEN placeholders with actual values",
+        "disabling": "Use disabledMcpServers array in project config to disable per-project, or simply remove it from this file",
+        "context_warning": "Keep under 10 MCPs enabled to preserve context window",
+        "unityMCP": "Requires a Unity MCP server package installed in the Unity project (e.g. com.unity.mcp or a third-party equivalent). You must configure the url yourself — use http://localhost:8080/mcp for a local server, or your remote endpoint if hosted externally. The Unity Editor and the MCP server must both be running before Claude can connect."
     }
 }

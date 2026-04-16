@@ -306,10 +306,9 @@ the combat-crafting loop engaging for 30+ minute sessions"]
 
 ## Next Steps
 
-- [ ] Get concept approval from creative-director
-- [ ] Fill in CLAUDE.md technology stack based on engine choice (`/setup-engine`)
+- [ ] Review concept with technical-director and game-designer
 - [ ] Create game pillars document (`/design-review` to validate)
-- [ ] Decompose concept into systems (`/map-systems` — maps dependencies, assigns priorities, guides per-system GDD writing)
+- [ ] Decompose concept into systems (`/architecture-decision` — documents system breakdown, dependencies, and priorities)
 - [ ] Create first architecture decision record (`/architecture-decision`)
 - [ ] Prototype core loop (`/prototype [core-mechanic]`)
 - [ ] Validate core loop with playtest (`/playtest-report`)

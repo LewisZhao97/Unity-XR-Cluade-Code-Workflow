@@ -5,4 +5,4 @@
 3. SDK public API changes require review by `sdk-developer` and `technical-director`
 4. Architecture changes require sign-off from `technical-director`
 5. Cross-system changes require coordination by `producer`
-6. Security-sensitive changes require review by `security-engineer`
+6. Security-sensitive changes require careful review by `lead-programmer` and `technical-director`

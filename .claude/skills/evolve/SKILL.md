@@ -8,7 +8,7 @@ command: true
 
 ## Implementation
 
-Read instincts from `~/.claude/homunculus/` (project + global scopes) and cluster them manually. The previous auto-CLI was removed when continuous-learning-v2 was cut.
+Read instincts from `~/.claude/homunculus/` (project + global scopes) and cluster them manually.
 
 Analyzes instincts and clusters related ones into higher-level structures:
 - **Commands**: When instincts describe user-invoked actions

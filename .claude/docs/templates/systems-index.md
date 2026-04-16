@@ -3,7 +3,7 @@
 > **Status**: [Draft / Under Review / Approved]
 > **Created**: [Date]
 > **Last Updated**: [Date]
-> **Source Concept**: design/gdd/game-concept.md
+> **Source Concept**: docs/app design docs/game-concept.md
 
 ---
 
@@ -19,8 +19,8 @@ team member understand the "big picture" of what needs to be designed and built.
 
 | # | System Name | Category | Priority | Status | Design Doc | Depends On |
 |---|-------------|----------|----------|--------|------------|------------|
-| 1 | [e.g., Player Controller] | Core | MVP | [Not Started / In Design / In Review / Approved / Implemented] | [design/gdd/player-controller.md or "—"] | [e.g., Input System, Physics] |
-| 2 | [e.g., Camera System] | Core | MVP | Not Started | — | Player Controller |
+| 1 | [e.g., XR Session Manager] | Core | MVP | [Not Started / In Design / In Review / Approved / Implemented] | [docs/app design docs/xr-session-manager.md or "—"] | [e.g., OpenXR, Input System] |
+| 2 | [e.g., Interaction System] | Core | MVP | Not Started | — | XR Session Manager |
 
 [Add a row for every identified system. Use the categories and priority tiers
 defined below. Mark systems that were inferred (not explicitly in the concept doc)
@@ -32,15 +32,14 @@ with "(inferred)" in the system name.]
 
 | Category | Description | Typical Systems |
 |----------|-------------|-----------------|
-| **Core** | Foundation systems everything depends on | Player controller, input, physics, camera, scene management, state machine |
-| **Gameplay** | The systems that make the game fun | Combat, AI, stealth, movement abilities, interaction |
-| **Progression** | How the player grows over time | XP/leveling, skill trees, unlocks, achievements, reputation |
-| **Economy** | Resource creation and consumption | Currency, loot, crafting, shops, item database, drop tables |
+| **Core** | Foundation systems everything depends on | XR session, OpenXR input, tracking, spatial anchor, scene management, state machine |
+| **Interaction** | XR-specific interaction systems | XRI interactors/interactables, hand tracking, controller input, haptics |
+| **Gameplay** | Feature systems that drive the experience | Application-specific logic, task flows, object manipulation |
+| **Progression** | How the user's experience grows over time | Unlocks, onboarding stages, skill practice levels |
 | **Persistence** | Save state and continuity | Save/load, settings, cloud sync, profile management |
-| **UI** | Player-facing information displays | HUD, menus, inventory screen, dialogue UI, map, notifications |
-| **Audio** | Sound and music systems | Music manager, SFX bus, ambient audio, adaptive music, voice |
-| **Narrative** | Story and dialogue delivery | Dialogue system, quest tracking, cutscenes, journal, lore entries |
-| **Meta** | Systems outside the core game loop | Analytics, tutorials/onboarding, accessibility options, photo mode |
+| **Spatial UI** | World-space and HUD interfaces | World-space canvas, HUD overlays, spatial menus, notifications |
+| **Audio** | Sound and music systems | SFX bus, ambient audio, spatial audio, adaptive music |
+| **Meta** | Systems outside the core experience loop | Analytics, tutorials/onboarding, accessibility options |
 
 [Not every game needs every category. Remove categories that don't apply.
 Add custom categories if needed.]

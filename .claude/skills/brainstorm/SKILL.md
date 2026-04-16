@@ -177,8 +177,6 @@ who this game is actually for:
 
 Ground the concept in reality:
 
-- **Engine recommendation** (Godot / Unity / Unreal) with reasoning based
-  on concept needs, team expertise, and platform targets
 - **Art pipeline**: What's the art style and how labor-intensive is it?
 - **Content scope**: Estimate level/area count, item count, gameplay hours
 - **MVP definition**: What's the absolute minimum build that tests "is the

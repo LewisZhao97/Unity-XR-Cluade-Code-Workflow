@@ -14,18 +14,17 @@
                 |                  |
      +----------+----------+       |
      |    |    |    |    |         |
-    gp   tl   ui   ta  perf        |
+    gp   tl   ui  uta  perf        |
                                    |
                      +-------------+-------------+
                      |      |      |      |
                     xri   openxr  plat   sdk
                                   unity
                                     |
-                                 shader
+                                  uta (delegate)
 
-  Additional support agents:
-    security-engineer  — Security, data privacy
-    game-designer      — Mechanics, progression, player experience
+  Additional agents:
+    game-designer  — Mechanics, progression, player experience
 ```
 
 ### Legend
@@ -33,9 +32,8 @@
 gp     = gameplay-programmer     xri    = unity-xri-specialist
 tl     = tools-programmer        openxr = openxr-runtime-specialist
 ui     = ui-programmer           plat   = platform-specialist
-ta     = technical-artist        sdk    = sdk-developer
+uta    = unity-technical-artist  sdk    = sdk-developer
 perf   = performance-analyst     unity  = unity-specialist
-                                 shader = unity-shader-specialist
 ```
 
 ## Delegation Rules
@@ -46,10 +44,9 @@ perf   = performance-analyst     unity  = unity-specialist
 |------|----------------|
 | technical-director | lead-programmer, xr-specialist, performance-analyst |
 | producer | Any agent (task assignment within their domain only) |
-| lead-programmer | gameplay-programmer, tools-programmer, ui-programmer, technical-artist |
+| lead-programmer | gameplay-programmer, tools-programmer, ui-programmer, unity-technical-artist |
 | xr-specialist | unity-xri-specialist, openxr-runtime-specialist, platform-specialist, sdk-developer |
-| unity-specialist | unity-shader-specialist |
-| security-engineer | lead-programmer (secure patterns) |
+| unity-specialist | unity-technical-artist |
 
 ### Escalation Paths
 

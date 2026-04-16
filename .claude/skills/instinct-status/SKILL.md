@@ -10,7 +10,7 @@ Shows learned instincts for the current project plus global instincts, grouped b
 
 ## Implementation
 
-Read instincts directly from `~/.claude/homunculus/projects/<project-id>/instincts/` and `~/.claude/homunculus/instincts/`, then display grouped by domain with confidence scores. The previous auto-CLI was removed when continuous-learning-v2 was cut.
+Read instincts directly from `~/.claude/homunculus/projects/<project-id>/instincts/` and `~/.claude/homunculus/instincts/`, then display grouped by domain with confidence scores.
 
 ## Usage
 

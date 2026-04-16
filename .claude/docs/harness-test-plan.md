@@ -114,7 +114,7 @@ Each phase lists exactly which items it tests. Items marked with `*` are tested 
 | `gameplay-programmer` | Auto-routed for feature implementation | Clean implementation code |
 | `lead-programmer` | Via `/code-review` | Code quality feedback |
 | `xr-specialist` | Via XR-related implementation questions | XR safety checks |
-| `unity-shader-specialist` | If material/shader work needed for cubes | Shader guidance |
+| `unity-technical-artist` | If material/shader work needed for cubes | Shader guidance |
 | `performance-analyst` | Via `/verification-loop` Phase 5 | Performance analysis |
 
 ### Validation Criteria
@@ -141,7 +141,7 @@ Each phase lists exactly which items it tests. Items marked with `*` are tested 
 | 3.1 | Run `/xr-perf-profile full` | **Skill**: `xr-perf-profile`, **Agent**: `performance-analyst` | Frame budget analysis for 90Hz, GPU/CPU split, draw call count, GC analysis. Checks against hard limits (<11ms, <100 draws, 0 GC) | |
 | 3.2 | Run `/perf-profile` (generic) | **Skill**: `perf-profile` | General performance profiling, bottleneck identification, optimization recommendations with priority | |
 | 3.3 | Run `/build-platform validate` | **Skill**: `build-platform`, **Agent**: `platform-specialist` | Validates Android build settings for XR glasses, PC streaming config, quality levels, Addressables groups | |
-| 3.4 | Ask Claude to review shaders/materials for the throwable cubes | **Agent**: `technical-artist` | Rendering optimization advice, URP compatibility check | |
+| 3.4 | Ask Claude to review shaders/materials for the throwable cubes | **Agent**: `unity-technical-artist` | Rendering optimization advice, URP compatibility check | |
 | 3.5 | Ask about accessibility for the grab interaction | **Agent**: `accessibility-specialist` | Comfort settings, seated mode support, input remapping recommendations. References **Template**: `test-plan.md` | |
 
 ### Validation Criteria
@@ -163,7 +163,7 @@ Each phase lists exactly which items it tests. Items marked with `*` are tested 
 |---|--------|-------|-----------------|-------|
 | 4.1 | Run `/sprint-plan` for a 2-week sprint | **Skill**: `sprint-plan`, **Agent**: `producer` | Sprint plan with capacity, priorities, task breakdown. References **Template**: `sprint-plan.md` | |
 | 4.2 | Run `/scope-check` against the original plan from Phase 1 | **Skill**: `scope-check` | Scope analysis comparing current vs planned. Flags any additions, quantifies bloat | |
-| 4.3 | Run `/milestone-review` | **Skill**: `milestone-review` | Progress review: feature completeness %, quality metrics, risk assessment, go/no-go. References **Template**: `milestone-definition.md` | |
+| 4.3 | Run `/milestone-gate` | **Skill**: `milestone-gate` | Phase readiness check: artifact presence, quality gates, open bugs/TODOs. Produces PASS / CONCERNS / FAIL verdict with blockers. | |
 | 4.4 | Run `/retrospective` | **Skill**: `retrospective` | Sprint retrospective analyzing work done, velocity, blockers, patterns | |
 | 4.5 | Run `/tech-debt` | **Skill**: `tech-debt` | Scans codebase for debt indicators, categorizes, prioritizes. Creates debt register | |
 | 4.6 | Run `/gate-check` for "pre-production → production" transition | **Skill**: `gate-check` | Phase gate validation with PASS/CONCERNS/FAIL verdict. Lists blockers and required artifacts. References **Template**: `project-stage-report.md` | |
@@ -243,7 +243,7 @@ Each phase lists exactly which items it tests. Items marked with `*` are tested 
 | # | Action | Tests | Expected Result | Pass? |
 |---|--------|-------|-----------------|-------|
 | 6.7 | Ask about network sync for multiplayer grab | **Agent**: `network-programmer` | Networking advice for state replication of grab interactions | |
-| 6.8 | Ask about security for a leaderboard (throw distance) | **Agent**: `security-engineer` | Security review: anti-cheat, data validation, input sanitization. References **Rule**: `security.md`, `csharp/security.md` | |
+| 6.8 | Ask about security for a leaderboard (throw distance) | **Agent**: `lead-programmer` | Security review: data validation, input sanitization. | |
 | 6.9 | Ask Claude to create an editor tool for placing throwable objects | **Agent**: `tools-programmer` | Editor extension code with proper Editor/ folder structure | |
 | 6.10 | Ask about UI for a score display | **Agent**: `ui-programmer`, `unity-ui-specialist` | UI implementation guidance (Canvas/UI Toolkit), world-space for XR | |
 
@@ -269,7 +269,7 @@ Each phase lists exactly which items it tests. Items marked with `*` are tested 
 | 7.1 | Run `/release-checklist` | **Skill**: `release-checklist` | Pre-release validation checklist: build, certification, store metadata, launch readiness. References **Template**: `release-checklist-template.md` | |
 | 7.2 | Run `/changelog` | **Skill**: `changelog` | Auto-generates changelog from git commits. Both internal and player-facing versions. References **Template**: `changelog-template.md`, `release-notes.md` | |
 | 7.3 | Run `/hotfix "Fix physics collision layer on grab release"` | **Skill**: `hotfix` | Emergency fix workflow: creates hotfix branch, audit trail, backport plan | |
-| 7.4 | Run `/skill-create` to see if it detects patterns from this session | **Skill**: `skill-create` | Analyzes git log, detects patterns, generates or suggests SKILL.md creation | |
+| 7.4 | Run `/learn-eval` to extract reusable patterns from this session | **Skill**: `learn-eval` | Analyzes session, evaluates quality, determines save location, proposes skill file | |
 
 ### Orchestration Skills
 
@@ -370,7 +370,7 @@ Each phase lists exactly which items it tests. Items marked with `*` are tested 
 | release-checklist | 7 | 7.1 |
 | changelog | 7 | 7.2 |
 | hotfix | 7 | 7.3 |
-| skill-create | 7 | 7.4 |
+| learn-eval | 7 | 7.4 |
 | team-release | 7 | 7.5 |
 | team-ui | 7 | 7.6 |
 | simplify | 8 | 8.1 |
@@ -400,17 +400,17 @@ Each phase lists exactly which items it tests. Items marked with `*` are tested 
 | unity-specialist | 2 | Unity API questions |
 | gameplay-programmer | 2 | Feature implementation |
 | lead-programmer | 2 | `/code-review` |
-| unity-shader-specialist | 2 | Material/shader questions |
+| unity-technical-artist | 2 | Material/shader questions |
 | performance-analyst | 3 | `/xr-perf-profile` |
 | platform-specialist | 3 | `/build-platform` |
-| technical-artist | 3 | Rendering questions |
+| unity-technical-artist | 3 | Rendering questions |
 | accessibility-specialist | 3 | Comfort/accessibility |
 | qa-tester | 6 | `/bug-report` |
 | qa-lead | 7 | `/team-release` |
 | localization-lead | 6 | `/localize` |
 | prototyper | 6 | `/prototype` |
 | network-programmer | 6 | Multiplayer questions |
-| security-engineer | 6 | Security review |
+| lead-programmer | 6 | Security-sensitive code review |
 | tools-programmer | 6 | Editor tool creation |
 | ui-programmer | 6 | UI questions |
 | unity-ui-specialist | 6 | UI implementation |

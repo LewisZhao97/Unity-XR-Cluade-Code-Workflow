@@ -20,21 +20,19 @@
 
 ### Design Documentation
 - **Status**: [X%] complete
-- **Files Found**: [N] documents in `design/`
-  - GDD sections: [N] files in `design/gdd/`
-  - Narrative docs: [N] files in `design/narrative/`
-  - Level designs: [N] files in `design/levels/`
+- **Files Found**: [N] documents in `docs/app design docs/`
+  - Design docs: [N] files in `docs/app design docs/`
 - **Key Gaps**:
   - [ ] [Missing doc 1 + why it matters]
   - [ ] [Missing doc 2 + why it matters]
 
 ### Source Code
 - **Status**: [X%] complete
-- **Files Found**: [N] source files in `src/`
+- **Files Found**: [N] source files in `Assets/Scripts/` · [N] in `Packages/com.yourcompany.xr.sdk/`
 - **Major Systems Identified**:
-  - ✅ [System 1] (`src/path/`) — [brief status]
-  - ✅ [System 2] (`src/path/`) — [brief status]
-  - ⚠️  [System 3] (`src/path/`) — [issue or incomplete]
+  - ✅ [System 1] (`Assets/Scripts/`) — [brief status]
+  - ✅ [System 2] (`Assets/Scripts/`) — [brief status]
+  - ⚠️  [System 3] (`Assets/Scripts/`) — [issue or incomplete]
 - **Key Gaps**:
   - [ ] [Missing system 1 + impact]
   - [ ] [Missing system 2 + impact]
@@ -53,15 +51,15 @@
 ### Production Management
 - **Status**: [X%] complete
 - **Found**:
-  - Sprint plans: [N] in `production/sprints/`
-  - Milestones: [N] in `production/milestones/`
+  - Sprint plans: [N] in `docs/production/sprints/`
+  - Milestones: [N] in `docs/production/milestones/`
   - Roadmap: [Exists | Missing]
 - **Key Gaps**:
   - [ ] [Missing production artifact + impact]
 
 ### Testing
 - **Status**: [X%] coverage (estimated)
-- **Test Files**: [N] in `tests/`
+- **Test Files**: [N] in `Assets/Tests/`
 - **Coverage by System**:
   - [System 1]: [X%] (estimated)
   - [System 2]: [X%] (estimated)
@@ -69,7 +67,7 @@
   - [ ] [Missing test area + risk]
 
 ### Prototypes
-- **Active Prototypes**: [N] in `prototypes/`
+- **Active Prototypes**: [N] in `Assets/Prototypes/`
   - ✅ [Prototype 1] — documented with README
   - ⚠️  [Prototype 2] — no README, unclear status
 - **Archived**: [N] (experiments completed)
@@ -167,27 +165,19 @@ Based on gaps identified, consider running:
 ## Appendix: File Counts by Directory
 
 ```
-design/
-  gdd/           [N] files
-  narrative/     [N] files
-  levels/        [N] files
+docs/app design docs/    [N] design files
+docs/architecture/       [N] ADRs
+docs/production/
+  sprints/               [N] plans
+  milestones/            [N] definitions
 
-src/
-  core/          [N] files
-  gameplay/      [N] files
-  ai/            [N] files
-  networking/    [N] files
-  ui/            [N] files
+Assets/Scripts/          [N] source files
+Assets/Tests/            [N] test files
+Assets/Prototypes/       [N] prototype scenes
 
-docs/
-  architecture/  [N] ADRs
-
-production/
-  sprints/       [N] plans
-  milestones/    [N] definitions
-
-tests/           [N] test files
-prototypes/      [N] directories
+Packages/com.yourcompany.xr.sdk/
+  Runtime/               [N] SDK source files
+  Tests/                 [N] SDK test files
 ```
 
 ---

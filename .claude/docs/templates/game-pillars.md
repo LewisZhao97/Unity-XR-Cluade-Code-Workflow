@@ -3,7 +3,7 @@
 ## Document Status
 - **Version**: 1.0
 - **Last Updated**: [Date]
-- **Approved By**: creative-director
+- **Approved By**: [game-designer / technical-director]
 - **Status**: [Draft / Under Review / Approved]
 
 ---
@@ -223,7 +223,7 @@ reflects which aspects of the experience are most essential to the core fantasy.
 4. If not, the higher-priority pillar wins
 5. Document the decision and rationale in the relevant design document
 6. If the conflict is fundamental (two pillars are irreconcilable), escalate to
-   the creative-director to consider revising the pillars themselves
+   the game-designer and technical-director to consider revising the pillars themselves
 
 ---
 
@@ -300,7 +300,7 @@ Before finalizing the pillars, verify:
 
 ## Next Steps
 
-- [ ] Get pillar approval from creative-director
+- [ ] Get pillar approval from game-designer and technical-director
 - [ ] Distribute to all department leads for sign-off
 - [ ] Create design tests for each pillar using real upcoming decisions
 - [ ] Schedule first pillar review (after 2 weeks of development)

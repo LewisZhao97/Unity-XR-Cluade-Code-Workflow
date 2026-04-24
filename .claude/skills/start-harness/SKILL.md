@@ -12,41 +12,67 @@ Single entry point: discover → ensure harness compliance → route to workflow
 
 ---
 
-## Step 1 — Discover Project State (Silent)
+## Step 1 — Discover Project State
 
-Before asking anything, silently gather context.
+Print the discovery checklist to the terminal as a visible progress list. Tick each item `[x]` as it is confirmed; mark missing items `[ ] — not found`. This gives the user a running view of what was inspected so gaps are never silent.
 
-### Unity Project
-- **Unity version**: Read `ProjectSettings/ProjectVersion.txt`
-- **Render pipeline**: Check `ProjectSettings/ProjectSettings.asset` for URP/HDRP/Built-in
-- **Rendering mode**: Check XR settings for Single Pass Instanced / Multi-pass
+**Template to print:**
 
-### XR Stack
-- **XR packages**: Read `Packages/manifest.json` — look for:
-  - `com.unity.xr.interaction.toolkit` (XRI)
-  - `com.unity.xr.openxr` (OpenXR plugin)
-  - `com.unity.xr.arfoundation` (AR Foundation)
-  - `com.unity.xr.hands` (Hand tracking)
-  - Any custom SDK packages (`com.*.xr.*` or `com.*.sdk`)
-- **XR platform targets**: Check build settings for Android/Windows/iOS
+```
+=== Discovery Checklist ===
+Unity Project
+  [ ] Unity version              (ProjectSettings/ProjectVersion.txt)
+  [ ] Render pipeline            (URP / HDRP / Built-in)
 
-### SDK / Runtime
-- **SDK package path**: Glob for `Packages/com.*.xr.*/package.json` or `Packages/com.*.sdk/package.json`
-- **SDK structure**: If found, check `Runtime/`, `Editor/`, `Tests/` subdirectories
-- **Native runtime**: Check for `.aar`, `.so`, `.dll` files inside SDK package
+XR Packages (read Packages/manifest.json)
+  [ ] XR Interaction Toolkit     (com.unity.xr.interaction.toolkit)
+  [ ] XR Hands                   (com.unity.xr.hands)
+  [ ] XR Plugin Management       (com.unity.xr.management)
+  [ ] OpenXR plugin              (com.unity.xr.openxr)                [optional]
+  [ ] AR Foundation              (com.unity.xr.arfoundation)          [optional]
+  [ ] Other com.unity.xr.*       (glob the manifest)
+  [ ] Input System               (com.unity.inputsystem)
 
-### Codebase
-- **Script folders**: Glob `Assets/Scripts/*/`
-- **Test folders**: Check `Assets/Tests/`, `Tests/`, or `*.Tests.asmdef`
-- **Assembly definitions**: Glob `**/*.asmdef`
-- **Existing conventions**: Sample 2-3 `.cs` files to detect naming style (m_ vs _ vs none)
+SDK Package
+  [ ] Local UPM package(s)       (any "file:" entry in manifest.json)
+  [ ] Declared XR deps           (dependencies block of that package.json)
+  [ ] Runtime binaries           (Runtime/Android/*.aar, *.so, *.dll)
+  [ ] Package asmdefs            (*.asmdef inside the package)
 
-### Harness State
-- **CLAUDE.md exists?** Check project root
-- **`.claude/` exists?** Check rules/, skills/, hooks/, agents/
-- **Prototypes?** Check `Assets/Prototypes/` or `Prototypes/`
+Codebase
+  [ ] Script folders             (Assets/Scripts/**)
 
-Store all findings. Do NOT output raw discovery — synthesize for later steps.
+Harness State
+  [ ] CLAUDE.md                  (project root)
+  [ ] .claude/ subdirs           (rules/, skills/, agents/, hooks/)
+  [ ] Prototypes                 (Assets/Prototypes/ or Prototypes/)
+===========================
+```
+
+### What to detect
+
+**Unity Project**
+- Unity version from `ProjectSettings/ProjectVersion.txt`
+- Render pipeline from `ProjectSettings/ProjectSettings.asset` (or URP asset presence)
+
+**XR Packages** — read `Packages/manifest.json` only. Report every dependency whose key starts with `com.unity.xr.` (XRI, XR Hands, XR Plugin Management, OpenXR, AR Foundation, Visual Scripting XR, etc.). These public Unity packages are safe to name in the output.
+
+**SDK Package — shape-based, never name-based.** The SDK package name is project-specific and may be confidential. Detect by **shape**:
+1. In `manifest.json`, find every dependency whose version value starts with `file:` — these are local UPM packages linked from outside the project (typical SDK dev-link pattern).
+2. For each, resolve the path (relative to `Packages/`) and read its `package.json` to get the real name, version, and declared dependencies.
+3. Look for `Runtime/Android/*.aar`, `*.so`, or `*.dll` inside the package — presence confirms it's the native-runtime SDK.
+
+Record the SDK package name internally for the session, but follow the project's privacy rules about what goes into tracked files. Refer to it in generated docs as "the vendor XR SDK package" unless the user says otherwise.
+
+**Codebase**
+- Script folders: glob `Assets/Scripts/**/*.cs` (may be empty in early-stage projects — that's fine).
+
+**Harness State**
+- `CLAUDE.md` at project root.
+- `.claude/` subdirs: `rules/`, `skills/`, `agents/`, `hooks/`.
+- `Assets/Prototypes/` or `Prototypes/` for experimental work.
+
+After the checklist prints fully ticked (or with clearly-marked gaps), synthesize findings for Step 2. Do NOT dump raw file contents — the ticked checklist itself is the summary.
 
 ---
 

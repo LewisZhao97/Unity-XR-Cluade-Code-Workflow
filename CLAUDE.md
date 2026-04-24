@@ -6,15 +6,16 @@
 
 | Key | Value |
 |-----|-------|
-| **Engine** | Unity 6.x (URP, Single Pass Instanced) |
-| **XR Framework** | XR Interaction Toolkit (XRI) + OpenXR |
-| **SDK** | XR SDK (UPM package at `Packages/com.yourcompany.xr.sdk/`) |
-| **Platforms** | XR glasses (standalone), PC streaming to glasses |
-| **Language** | C# (Unity app), C++/Java (native runtime) |
+| **Engine** | Unity 6000.3.5f2 (URP 17.3.0) |
+| **XR Packages** | XR Interaction Toolkit 3.0.5, XR Hands 1.5.1, XR Management 4.5.1 (pulled transitively via the vendor XR SDK package) |
+| **SDK Package** | Vendor XR SDK — local UPM package referenced via `file:../../` path (lives outside the repo) |
+| **Platforms** | XR glasses (standalone Android), PC streaming to glasses |
+| **Language** | C# (Unity app), Java (native Android runtime `.aar`) |
 
-> The SDK is a UPM package, not part of `Assets/`. The native OpenXR runtime
-> is compiled at `Runtime/Android/` inside the SDK package.
-> Unity C# calls the runtime only through the SDK's managed API — never directly.
+> The SDK is a local UPM package, not part of `Assets/`. Native runtime `.aar` files
+> live at `Runtime/Android/` inside the SDK package. Unity C# calls the runtime only
+> through the SDK's managed API — never directly. OpenXR is **not** used on this
+> project — the vendor plugin handles the runtime layer.
 
 ## Collaboration Protocol
 
@@ -42,7 +43,7 @@ Follow this sequence for every task. Do not skip steps.
 ### 1. Understand Before Acting
 
 - **Read before writing.** Never propose changes to code you haven't read.
-- **Research before implementing.** Check Unity docs, XRI docs, OpenXR spec, and the existing codebase for prior art. Prefer proven patterns over net-new code.
+- **Research before implementing.** Check Unity docs, XRI docs, the vendor SDK docs, and the existing codebase for prior art. Prefer proven patterns over net-new code.
 - **Ask when ambiguous.** If requirements are unclear, ask — don't assume.
 
 ### 2. Plan Before Coding
@@ -90,13 +91,14 @@ These numbers are hard limits. Details and rationale are in the rules.
 
 | Metric | XR Glasses | PC Streaming |
 |--------|-----------|--------------|
-| Frame time | 11ms (90Hz) | 11ms (90Hz) |
+| Frame time | 11ms @ 90Hz (13.3ms @ 75Hz) | 11ms @ 90Hz (13.3ms @ 75Hz) |
 | Draw calls | < 100 | < 300 |
 | GC Alloc/frame | 0 bytes | 0 bytes |
 
 - Never move the camera programmatically without user control (motion sickness).
 - Always support both controllers and hand tracking.
-- All input via OpenXR action bindings — never hardcode device-specific paths.
+- All input via XRI action bindings (Input System actions) — never hardcode device-specific paths.
+- Target refresh rate is **90Hz (primary)** and **75Hz (fallback)**. Budget for the primary.
 
 ## Naming Convention (Quick Reference)
 

@@ -15,11 +15,14 @@ When this skill is invoked:
 2. **Check for existing concept work**:
    - Read `docs/app design docs/game-concept.md` if it exists (resume, don't restart)
    - Read `docs/app design docs/game-pillars.md` if it exists (build on established pillars)
+   - Read `docs/app design docs/xr-constraints.md` if it exists (resume device envelope)
 
 3. **Run through ideation phases** interactively, asking the user questions at
-   each phase. Do NOT generate everything silently — the goal is **collaborative
-   exploration** where the AI acts as a creative facilitator, not a replacement
-   for the human's vision.
+   each phase. **Always start with Phase 0 (XR Pre-Phase)** — this harness is
+   XR-only, so device discovery is mandatory before concept work. Do NOT
+   generate everything silently — the goal is **collaborative exploration**
+   where the AI acts as a creative facilitator, not a replacement for the
+   human's vision.
 
    **Use `AskUserQuestion`** at key decision points throughout brainstorming:
    - Constrained taste questions (genre preferences, scope, team size)
@@ -35,6 +38,83 @@ When this skill is invoked:
    - Build on each other — "yes, and..." responses, not "but..."
    - Use constraints as creative fuel — limitations often produce the best ideas
    - Time-box each phase — keep momentum, don't over-deliberate early
+
+---
+
+### Phase 0: XR Device Discovery
+
+XR design constraints aren't generic — they cascade from the specific device's
+display, input, tracking, and performance class. **Concept generation without
+this discovery produces concepts that look great on paper and fail on
+hardware.** Run this phase before Phase 1.
+
+Gather these facts before any concepts are generated:
+
+**Display type**:
+- Optical see-through (transparent panels — additive blending, no true black,
+  real world always visible). Most AR glasses.
+- Passthrough / camera-MR (camera-based composition — opaque visuals possible,
+  some latency, mid-FOV).
+- Immersive (full VR, no real world).
+
+Each has dramatically different implications for art direction (additive
+displays cannot render black; opaque visuals open the full palette), session
+type (immersion supports longer sessions; AR glasses support shorter ones),
+and content scale (AR favors tabletop; VR supports room-scale).
+
+**Input modalities**:
+- Controllers (6DOF) — precise pointing, button input, optional haptics.
+- Hand tracking — full per-joint pose, or recognized gestures only? Is pinch
+  detected as a discrete event or inferred from thumb-index distance? Is
+  two-handed simultaneous tracking robust, or does one hand drop out when
+  they're close?
+- Eye tracking, voice input.
+
+Hand-tracking fidelity is often the most consequential and most uncertain
+input variable. If unknown at this stage, flag it as the **#1 blocking
+question** to resolve before Phase 7 architecture.
+
+**Tracking and form factor**:
+- 3DOF (rotation only) vs 6DOF (position + rotation).
+- Stationary, room-scale, or world-scale.
+- Tethered (PC) vs standalone (mobile-class compute).
+
+**Performance class**:
+- Refresh rate target (60 / 72 / 90 / 120 Hz).
+- Frame budget = 1000 ms ÷ refresh rate. Standalone glasses are typically
+  10–13 ms; tethered VR can be more generous.
+- GPU/CPU class (mobile-class chip vs full PC GPU).
+
+**Session profile** (sets expectations for Phase 3):
+- AR glasses: 5–15 min typical, often shorter.
+- Standalone VR: 20–45 min before fatigue.
+- Tethered VR: 30–90 min possible.
+
+**Comfort defaults** the device imposes:
+- Arm fatigue (gorilla arm) on hands-only devices.
+- Neck strain risk if content sits above eye line.
+- Motion sickness risk on VR/MR with camera movement.
+- Eye strain on small text, dense detail, or low refresh rate.
+
+**Synthesize the XR Envelope**
+
+After collecting these facts, articulate **what kinds of experiences fit
+this device class and what does not**. Examples of valid envelopes:
+
+- *"Optical-see-through AR glasses, hand-tracking, 50° FOV, ~11 ms budget,
+  5–15 min sessions. Envelope: tabletop creator toys, productivity, light
+  utilities. Bright stylized art only. Content within arm's reach.
+  Anti-envelope: room-scale immersion, photorealism, dark atmospheres,
+  long sessions."*
+- *"Passthrough MR with controllers, 110° FOV, ~13 ms budget, 30 min
+  sessions. Envelope: room-scale interactive content, mid-fidelity 3D,
+  controller-precision input. Anti-envelope: subtle hand interaction,
+  ultra-tight perf, low latency requirements."*
+
+Read the envelope back to the user. Confirm before Phase 1.
+
+**The envelope is a hard filter on Phase 2.** Concepts that don't fit are
+not considered.
 
 ---
 
@@ -96,6 +176,20 @@ For each concept, present:
 - **Estimated Scope** (small / medium / large)
 - **Why It Could Work** (1 sentence on market/audience fit)
 - **Biggest Risk** (1 sentence on the hardest unanswered question)
+- **Why XR?** What does the device add that flat-screen can't deliver?
+  Does it use spatial perception, embodied interaction, or scale in ways
+  flat-screen structurally cannot?
+- **Survives flat-screen test**: If forced to ship as a non-XR app, would
+  the experience survive intact? **If yes, the concept is wasting the
+  medium — reject or rework.**
+- **Fits the XR Envelope**: Given Phase 0's device constraints, is this
+  concept buildable on the target hardware? If not, reject or rework.
+
+Be honest in the XR-native check. Most "XR concepts" turn out to be
+flat-screen ideas with a headset gimmick. Strong XR concepts use the
+medium structurally — pluck a planet out of orbit, reach into a tiny
+diorama, lean down to peer through a window — actions whose
+information density disappears on a 2D screen.
 
 Present all three. Ask the user to pick one, combine elements, or request
 new concepts. Never pressure toward a choice — let them sit with it.
@@ -120,10 +214,33 @@ isolation, no amount of content or polish will save the game.
 - Where does "one more turn" / "one more run" psychology kick in?
 - What choices does the player make at this level?
 
-**Session Loop** (30-120 minutes):
-- What does a complete session look like?
+**Session Loop**:
+XR sessions are SHORTER than typical PC/console sessions. Use the device's
+session profile from Phase 0 as the upper bound, not 30–120 min:
+- AR glasses: 5–15 min typical, often shorter
+- Standalone VR: 20–45 min before fatigue
+- Tethered VR: 30–90 min possible
+
+Design implications that follow:
+- **2-minute entry value**: meaningful satisfaction within the first 2 min.
+  No long onboarding, no required tutorials.
+- **Save aggressively**: device removal is unpredictable. Continuous save
+  on key events; visible save options for the player.
+- **No "session length" assumptions**: the player decides when to stop.
+  Don't structure around "clear this dungeon then quit" beats.
+
+Then ask:
+- What does a complete session look like at this length?
 - Where are the natural stopping points?
-- What's the "hook" that makes them think about the game when not playing?
+- What's the "hook" that makes them think about the experience when not
+  wearing the device?
+
+**Comfort considerations** (apply to every loop level):
+- Arm fatigue (gorilla arm) on hands-only devices — allow rest poses
+- Neck strain — keep content at or below eye line
+- Eye strain — readable text sizes, avoid dense detail
+- Motion sickness (VR/MR) — never move the camera without player input
+- Display-driven art constraints from Phase 0 — additive blending limits
 
 **Progression Loop** (days/weeks):
 - How does the player grow? (Power? Knowledge? Options? Story?)
@@ -139,10 +256,12 @@ isolation, no amount of content or polish will save the game.
 
 ### Phase 4: Pillars and Boundaries
 
-Game pillars are used by real AAA studios (God of War, Hades, The Last of
-Us) to keep hundreds of team members making decisions that all point the
-same direction. Even for solo developers, pillars prevent scope creep and
-keep the vision sharp.
+Game pillars are used by real studios to keep teams making decisions that
+all point the same direction. AAA action-narrative examples (God of War,
+Hades, The Last of Us) work; sandbox/creator examples (Townscaper, Cloud
+Gardens, Tilt Brush, Animal Crossing) work too — pick the canon that
+matches your concept's genre. Even for solo developers, pillars prevent
+scope creep and keep the vision sharp.
 
 Collaboratively define **3-5 pillars**:
 - Each pillar has a **name** and **one-sentence definition**
@@ -178,11 +297,35 @@ who this game is actually for:
 Ground the concept in reality:
 
 - **Art pipeline**: What's the art style and how labor-intensive is it?
+  Remember the display constraint from Phase 0 — additive optical displays
+  reward bright stylized art and punish photorealism.
 - **Content scope**: Estimate level/area count, item count, gameplay hours
 - **MVP definition**: What's the absolute minimum build that tests "is the
   core loop fun?"
-- **Biggest risks**: Technical risks, design risks, market risks
+- **Biggest risks**: Technical, design, market — *plus the XR-specific
+  categories below*
 - **Scope tiers**: What's the full vision vs. what ships if time runs out?
+
+**XR-specific risk categories** (add to the standard ranked risk list):
+
+- **Input fidelity risk**: Hand tracking / gesture detection reliability on
+  the target hardware. If pinch/grab/poke aren't reliable, the interaction
+  model breaks. **Mitigation**: validate with the actual SDK before Phase 7
+  architecture commits.
+- **Frame budget risk**: XR budgets are 5–10× tighter than typical games
+  (10–13 ms on standalone). Profile from day 1; establish ceiling counts
+  (entities, draw calls, triangles) before scaling content.
+- **Display constraint risk**: Optical-see-through can't render black;
+  passthrough has FOV and latency limits; immersive VR has motion-sickness
+  ceilings. **Mitigation**: test art direction on the actual device before
+  authoring at scale.
+- **Comfort risk**: Sustained sessions cause physical fatigue (arm, neck,
+  eye). If the comfort window is shorter than the design assumes, the
+  experience can't be played at intended length.
+- **Hardware fragmentation risk**: Different XR SDKs expose different
+  capabilities. Cross-platform support multiplies engineering work
+  non-linearly. Decide early whether the project commits to one device or
+  multiple.
 
 ---
 
@@ -191,8 +334,12 @@ Ground the concept in reality:
 Translate the concept into a high-level code architecture. This bridges design
 and implementation — developers use this as the blueprint before writing code.
 
-Using the template at `.claude/docs/templates/technical-design-document.md`,
-collaboratively define:
+Note on templates: `technical-design-document.md` is shaped for a *single
+subsystem*. For the architecture-overview produced here, adapt it as a
+top-down decomposition with subsystem summaries, then author per-subsystem
+detailed tech designs separately as each subsystem is implemented.
+
+Collaboratively define:
 
 - **System decomposition**: What major systems does this app need?
   (e.g., XR Interaction, Session Management, Progression, UI, Audio)
@@ -213,22 +360,30 @@ Ask the user about:
 
 ## Document Generation
 
-After all phases are complete, generate **3 documents**:
+After all phases are complete, generate **4 documents**:
 
-4. **Game Concept Document** — using the template at
+4. **XR Constraints Document** — using the template at
+   `.claude/docs/templates/xr-constraints.md`. Capture device capabilities,
+   input modalities, performance budget, comfort design rules, display-driven
+   art direction, and session design assumptions from Phase 0.
+   **Save to** `docs/app design docs/xr-constraints.md`.
+
+5. **Game Concept Document** — using the template at
    `.claude/docs/templates/game-concept.md`. Fill in ALL sections from the
    brainstorm conversation, including the MDA analysis, player motivation
    profile, and flow state design sections.
    **Save to** `docs/app design docs/game-concept.md`.
 
-5. **Game Pillars Document** — using the template at
+6. **Game Pillars Document** — using the template at
    `.claude/docs/templates/game-pillars.md`. Fill in pillars, anti-pillars,
    conflict resolution priority, MDA aesthetics ranking, SDT alignment, and
    emotional arc from Phase 4 discussion.
    **Save to** `docs/app design docs/game-pillars.md`.
 
-6. **Game Architecture Document** — using the template at
-   `.claude/docs/templates/technical-design-document.md`. Fill in system
+7. **Game Architecture Document** — using the template at
+   `.claude/docs/templates/technical-design-document.md` adapted as a
+   top-down architecture overview (subsystems summarised; per-subsystem
+   detail follows later as separate tech designs). Fill in system
    decomposition, component breakdown, data flow, dependencies, and
    implementation phases from Phase 7 discussion.
    **Save to** `docs/app design docs/game-architecture.md`.
@@ -236,10 +391,11 @@ After all phases are complete, generate **3 documents**:
 Create the `docs/app design docs/` directory if needed. Ask for approval
 before writing each document.
 
-7. **Suggest next steps**:
+8. **Suggest next steps**:
    - "Use `/design-review` to validate each document"
    - "Prototype the core loop with `/prototype [core-mechanic]`"
    - "If validated, plan the first sprint with `/sprint-plan new`"
 
-8. **Output a summary** with the chosen concept's elevator pitch, pillars,
-   primary player type, biggest risk, and paths to all 3 documents.
+9. **Output a summary** with the chosen concept's elevator pitch, pillars,
+   primary player type, biggest risk, the XR envelope, and paths to all
+   4 documents.

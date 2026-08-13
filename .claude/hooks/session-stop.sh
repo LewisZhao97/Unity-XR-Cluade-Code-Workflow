@@ -2,7 +2,7 @@
 # Claude Code Stop hook: Log session summary when Claude finishes
 # Records what was worked on for audit trail and sprint tracking
 
-LOG_DIR=".claude/logs"
+LOG_DIR="${CLAUDE_PROJECT_DIR:-.}/.claude/logs"
 mkdir -p "$LOG_DIR" 2>/dev/null
 
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)

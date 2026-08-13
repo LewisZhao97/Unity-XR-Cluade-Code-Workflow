@@ -10,7 +10,7 @@ else
     [ -z "$AGENT_NAME" ] && AGENT_NAME="unknown"
 fi
 
-LOG_DIR=".claude/logs"
+LOG_DIR="${CLAUDE_PROJECT_DIR:-.}/.claude/logs"
 mkdir -p "$LOG_DIR" 2>/dev/null
 
 echo "$(date +%Y%m%d_%H%M%S) | agent: $AGENT_NAME" >> "$LOG_DIR/session.log" 2>/dev/null

@@ -50,7 +50,7 @@ if [ "$WIP_FOUND" = false ]; then
 fi
 
 # --- Log compaction event ---
-LOG_DIR=".claude/logs"
+LOG_DIR="${CLAUDE_PROJECT_DIR:-.}/.claude/logs"
 mkdir -p "$LOG_DIR" 2>/dev/null
 echo "$(date) | context compaction" >> "$LOG_DIR/session.log" 2>/dev/null
 
